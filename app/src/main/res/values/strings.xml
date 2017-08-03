@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Mess Menegment</string>
+    <string name="error_msg">This field must not be empty</string>
+</resources>

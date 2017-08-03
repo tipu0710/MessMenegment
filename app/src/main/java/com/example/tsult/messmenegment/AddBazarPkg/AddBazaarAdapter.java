@@ -1,0 +1,88 @@
+package com.example.tsult.messmenegment.AddBazarPkg;
+
+import android.content.Context;
+import android.content.Intent;
+import android.graphics.Color;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
+import com.example.tsult.messmenegment.AddMember.Member;
+import com.example.tsult.messmenegment.R;
+
+import java.util.ArrayList;
+
+/**
+ * Created by tsult on 22-Jun-17.
+ */
+
+public class AddBazaarAdapter extends RecyclerView.Adapter<AddBazaarAdapter.ViewHolder> {
+
+    private ArrayList<Member> members;
+    private Context context;
+    private int i = 1;
+
+    public AddBazaarAdapter(ArrayList<Member> members, Context context) {
+        this.members = members;
+        this.context = context;
+    }
+
+    @Override
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.bazaar_single_row_2, parent, false);
+        ViewHolder v = new ViewHolder(view);
+        return v;
+    }
+
+    @Override
+    public void onBindViewHolder(ViewHolder holder, final int position) {
+        holder.mNameTv.setText(members.get(position).getmName());
+        if (i == 1){
+            holder.mNameTv.setBackgroundColor(Color.parseColor("#fcef7ccb"));
+            i++;
+        }else if (i == 2){
+            holder.mNameTv.setBackgroundColor(Color.parseColor("#fd5462fa"));
+            i++;
+        }else if (i == 3){
+            holder.mNameTv.setBackgroundColor(Color.parseColor("#fd55f552"));
+            i++;
+        }else {
+            holder.mNameTv.setBackgroundColor(Color.parseColor("#fdf7ca67"));
+            i = 1;
+        }
+        holder.mNameTv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, AddBazaar.class);
+                String name= members.get(position).getmName();
+                String phone = members.get(position).getmPhone();
+                String email = members.get(position).getnEmail();
+                int id = members.get(position).getmId();
+                String ident = members.get(position).getIdentifier();
+                intent.putExtra("condition",false);
+                intent.putExtra("id",id);
+                intent.putExtra("name",name);
+                intent.putExtra("phone", phone);
+                intent.putExtra("email", email);
+                intent.putExtra("identifier", ident);
+                context.startActivity(intent);
+            }
+        });
+
+    }
+
+    @Override
+    public int getItemCount() {
+        return members.size();
+    }
+
+    public class ViewHolder extends RecyclerView.ViewHolder {
+        TextView mNameTv;
+        public ViewHolder(View itemView) {
+            super(itemView);
+            mNameTv = (TextView) itemView.findViewById(R.id.bazaar_member_name);
+        }
+    }
+}

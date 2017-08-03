@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.tsult.messmenegment.ShowMealRatePkg.ShowMealRate">
+
+    <ImageView
+        android:src="@drawable/background"
+        android:scaleType="centerCrop"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:text="MEAL RATE DETAILS"
+            android:textColor="#ffffff"
+            android:layout_gravity="center"
+            android:padding="10dp"
+            android:layout_marginBottom="15dp"
+            android:layout_marginTop="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/total_meal_tv"
+                android:textColor="#ffffff"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:layout_weight=".6"
+                android:padding="10dp"
+                android:text="Total meal: " />
+
+            <TextView
+                android:id="@+id/total_meal"
+                android:text="0"
+                android:textColor="#ffffff"
+                android:padding="10dp"
+                android:gravity="right"
+                android:layout_marginRight="25dp"
+                android:layout_marginLeft="10dp"
+                android:layout_weight=".4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/total_bazaar_cost_tv"
+                android:text="Total Bazaar: "
+                android:textColor="#ffffff"
+                android:padding="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight=".6"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/total_bazaar_cost"
+                android:text="0"
+                android:textColor="#ffffff"
+                android:padding="10dp"
+                android:gravity="right"
+                android:layout_marginRight="25dp"
+                android:layout_marginLeft="10dp"
+                android:layout_weight=".4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/meal_extra_tv"
+                android:text="Total extra: "
+                android:textColor="#ffffff"
+                android:padding="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight=".6"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/meal_extra"
+                android:text="0"
+                android:textColor="#ffffff"
+                android:padding="10dp"
+                android:gravity="right"
+                android:layout_marginRight="25dp"
+                android:layout_marginLeft="10dp"
+                android:layout_weight=".4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/meal_rate_tv"
+                android:text="Meal Rate: "
+                android:textColor="#ffffff"
+                android:padding="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight=".6"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/meal_rate"
+                android:text="0"
+                android:textColor="#ffffff"
+                android:padding="10dp"
+                android:gravity="right"
+                android:layout_marginRight="25dp"
+                android:layout_marginLeft="10dp"
+                android:layout_weight=".4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:padding="10dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginLeft="10dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/display_name"
+                android:text="Name"
+                android:layout_gravity="center"
+                android:textColor="#ffffff"
+                android:padding="5dp"
+                android:layout_marginLeft="15dp"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:text="Total Deposit"
+                android:textColor="#ffffff"
+                android:padding="5dp"
+                android:gravity="center"
+                android:layout_weight=".5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:text="Total Meal"
+                android:textColor="#ffffff"
+                android:padding="5dp"
+                android:gravity="center"
+                android:layout_weight=".5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:text="Total Cost"
+                android:textColor="#ffffff"
+                android:gravity="right"
+                android:layout_marginRight="15dp"
+                android:padding="5dp"
+                android:layout_weight=".5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/member_meal_details_list"
+            android:padding="10dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+
+    </LinearLayout>
+
+</RelativeLayout>

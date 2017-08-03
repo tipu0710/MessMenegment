@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.tsult.messmenegment.Home.MainActivity">
+
+    <ImageView
+        android:src="@drawable/background"
+        android:scaleType="centerCrop"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+    <ImageView
+        android:layout_marginTop="20dp"
+        android:src="@drawable/icon2"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp" />
+    <LinearLayout
+        android:id="@+id/layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:gravity="center"
+        android:orientation="vertical">
+        <Button
+            android:id="@+id/add_member_btn"
+            android:background="#fcef7ccb"
+            android:textColor="#ffffff"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Add Member"/>
+
+        <Button
+            android:id="@+id/show_member_btn"
+            android:background="#fd5462fa"
+            android:textColor="#ffffff"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Members" />
+
+        <Button
+            android:id="@+id/show_meal_rate_btn"
+            android:background="#fd55f552"
+            android:textColor="#ffffff"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Meal rate" />
+
+        <Button
+            android:id="@+id/show_previous_data_btn"
+            android:background="#fdf7ca67"
+            android:textColor="#ffffff"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Previous data" />
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/add_option_btn"
+        android:text="Add"
+        android:background="#ff8c00"
+        android:textColor="#ffffff"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:id="@+id/button_view"
+        android:layout_above="@id/add_option_btn"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/add_bazaar_btn"
+            android:layout_margin="3dp"
+            android:background="#f2404c"
+            android:textColor="#ffffff"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Bazaar"/>
+        <Button
+            android:id="@+id/add_meal_btn"
+            android:layout_margin="3dp"
+            android:background="#fe8b27fd"
+            android:textColor="#ffffff"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Meal"/>
+        <Button
+            android:id="@+id/add_deposit_btn"
+            android:layout_margin="3dp"
+            android:background="#fe59f783"
+            android:textColor="#ffffff"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Deposit"/>
+         <Button
+            android:id="@+id/add_extra_btn"
+             android:layout_margin="3dp"
+             android:background="#e417ede6"
+             android:textColor="#ffffff"
+             android:layout_weight="1"
+             android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Extra"/>
+
+
+    </LinearLayout>
+</RelativeLayout>

@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.tsult.messmenegment.MemberDetailsPkg.MemberDetails">
+
+    <ImageView
+        android:src="@drawable/background"
+        android:scaleType="centerCrop"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/member_name_tv"
+            android:text="Member 1"
+            android:textColor="#ffffff"
+            android:textSize="25sp"
+            android:layout_gravity="center"
+            android:padding="15dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:text="Phone number: "
+                        android:textColor="#ffffff"
+                        android:padding="15dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight=".5"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:id="@+id/member_phone_tv"
+                        android:text="0"
+                        android:textColor="#ffffff"
+                        android:padding="15dp"
+                        android:gravity="right"
+                        android:layout_marginRight="25dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight=".5"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content" />
+                    <ImageButton
+                        android:id="@+id/call_btn"
+                        android:padding="15dp"
+                        android:src="@android:drawable/sym_action_call"
+                        android:background="@null"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/textView"
+                        android:textColor="#ffffff"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight=".3"
+                        android:padding="15dp"
+                        android:text="Email: " />
+
+                    <TextView
+                        android:id="@+id/member_email_tv"
+                        android:text="0"
+                        android:textColor="#ffffff"
+                        android:padding="15dp"
+                        android:gravity="right"
+                        android:layout_marginRight="25dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight=".5"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content" />
+                    <ImageButton
+                        android:id="@+id/email_btn"
+                        android:padding="15dp"
+                        android:src="@android:drawable/sym_action_email"
+                        android:background="@null"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/textView2"
+                        android:textColor="#ffffff"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight=".5"
+                        android:padding="15dp"
+                        android:text="Total meal: " />
+
+                    <TextView
+                        android:id="@+id/ind_total_meal_tv"
+                        android:text="0"
+                        android:textColor="#ffffff"
+                        android:padding="15dp"
+                        android:gravity="right"
+                        android:layout_marginRight="25dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight=".5"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:text="Deposit: "
+                        android:padding="15dp"
+                        android:textColor="#ffffff"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight=".5"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:id="@+id/ind_total_deposit_tv"
+                        android:text="0"
+                        android:padding="15dp"
+                        android:textColor="#ffffff"
+                        android:gravity="right"
+                        android:layout_marginRight="25dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight=".5"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:text="Meal rate: "
+                        android:padding="15dp"
+                        android:textColor="#ffffff"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight=".5"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:id="@+id/ind_total_meal_rate_tv"
+                        android:text="0"
+                        android:padding="15dp"
+                        android:textColor="#ffffff"
+                        android:gravity="right"
+                        android:layout_marginRight="25dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight=".5"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:text="Total extra cost: "
+                        android:padding="15dp"
+                        android:textColor="#ffffff"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight=".5"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:id="@+id/total_extra_tv"
+                        android:text="0"
+                        android:textColor="#ffffff"
+                        android:padding="15dp"
+                        android:gravity="right"
+                        android:layout_marginRight="25dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight=".5"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:text="Per person extra cost: "
+                        android:padding="15dp"
+                        android:textColor="#ffffff"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight=".5"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:id="@+id/ind_extra_tv"
+                        android:text="0"
+                        android:textColor="#ffffff"
+                        android:padding="15dp"
+                        android:gravity="right"
+                        android:layout_marginRight="25dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight=".5"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:text="Total cost: "
+                        android:padding="15dp"
+                        android:textColor="#ffffff"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight=".5"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:id="@+id/ind_total_cost_tv"
+                        android:text="0"
+                        android:textColor="#ffffff"
+                        android:padding="15dp"
+                        android:gravity="right"
+                        android:layout_marginRight="25dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight=".5"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:text="You have: "
+                        android:padding="15dp"
+                        android:textColor="#ffffff"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight=".5"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content" />
+                    <TextView
+                        android:id="@+id/ind_rest_money_tv"
+                        android:text="0"
+                        android:padding="15dp"
+                        android:textColor="#ffffff"
+                        android:gravity="right"
+                        android:layout_marginRight="25dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_weight=".5"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+</RelativeLayout>
