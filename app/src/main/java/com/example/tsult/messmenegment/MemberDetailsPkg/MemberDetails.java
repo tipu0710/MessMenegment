@@ -1,6 +1,7 @@
 package com.example.tsult.messmenegment.MemberDetailsPkg;
 
 import android.Manifest;
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -27,7 +28,7 @@ import com.example.tsult.messmenegment.ShowMealRatePkg.MealInfo;
 import java.text.DecimalFormat;
 import java.util.ResourceBundle;
 
-public class MemberDetails extends AppCompatActivity {
+public class MemberDetails extends Activity {
 
     private TextView mNameTV;
     private TextView mPhoneTV;

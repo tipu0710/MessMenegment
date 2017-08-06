@@ -1,5 +1,6 @@
 package com.example.tsult.messmenegment.ShowMealRatePkg;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,7 +19,7 @@ import com.example.tsult.messmenegment.R;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 
-public class ShowMealRate extends AppCompatActivity {
+public class ShowMealRate extends Activity {
 
     private TextView totalMeal, totalBazaarCost, mealRate, extraTv;
     private RecyclerView memberList;

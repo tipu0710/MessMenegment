@@ -7,7 +7,11 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
 
+import com.example.tsult.messmenegment.AddBazarPkg.AddBazaarDBOperation;
+import com.example.tsult.messmenegment.AddDepositPkg.AddDepositDBOperation;
 import com.example.tsult.messmenegment.AddExtraPkg.AddExtraDBHelper;
+import com.example.tsult.messmenegment.AddExtraPkg.AddExtraDBOperation;
+import com.example.tsult.messmenegment.AddMealPkg.AddMealDBOperation;
 import com.example.tsult.messmenegment.Home.DatabaseCreation;
 import com.example.tsult.messmenegment.PreviousDataPkg.PreviousData;
 import com.example.tsult.messmenegment.PreviousDataPkg.PreviousTable;
@@ -120,7 +124,7 @@ public class AddMemberDBOperation {
         }
     }
 
-    public ArrayList<PreviousTable> getAllTables(){
+    public ArrayList<PreviousTable> getAllTables(String identifier){
         ArrayList<PreviousTable>previousTables = new ArrayList<>();
         this.open();
         Cursor cursor = sqLiteDatabase.rawQuery("select "+ AddMemberDatabaseHelper.IDENTIFIER + " from "+ AddMemberDatabaseHelper.MEMBER_LIST_TABLE+ " union "+"select "+ AddMemberDatabaseHelper.IDENTIFIER + " from "+ AddMemberDatabaseHelper.MEMBER_LIST_TABLE ,null);
@@ -134,7 +138,26 @@ public class AddMemberDBOperation {
                 if (table.equals(MealInfo.getMonthName(MealInfo.getMonth())+" - "+MealInfo.getYear())){
                     continue;
                 }else {
-                    previousTables.add(new PreviousTable(table));
+                    ArrayList<Member> members = new ArrayList<>();
+                    members = getMemberList(table);
+                    if (members.size()>0){
+                        previousTables.add(new PreviousTable(table));
+                    }else {
+                        AddBazaarDBOperation addBazaarDBOperation = new AddBazaarDBOperation(0, context);
+                        addBazaarDBOperation.deleteAllBazaar(identifier);
+
+                        AddDepositDBOperation addDepositDBOperation = new AddDepositDBOperation(context, 0);
+                        addDepositDBOperation.deleteAllDeposit(identifier);
+
+                        AddExtraDBOperation addExtraDBOperation = new AddExtraDBOperation(context);
+                        addExtraDBOperation.deleteExtra(identifier);
+
+                        AddMealDBOperation addMealDBOperation = new AddMealDBOperation(context, null);
+                        addMealDBOperation.deleteAllMeal(identifier);
+
+                        AddMemberDBOperation addMemberDBOperation = new AddMemberDBOperation(context);
+                        addMemberDBOperation.deleteAllMember(identifier);
+                    }
                 }
             }
         }

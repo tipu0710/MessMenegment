@@ -3,15 +3,18 @@
     <item xmlns:android="http://schemas.android.com/apk/res/android">
         <shape>
             <size android:height="40dp"></size>
-            <solid android:color="#fbf583" />
-            <stroke android:color="#fcf238"
-                android:width="2dp"/>
             <corners
-                android:topLeftRadius="100dp"
-                android:topRightRadius="100dp"
-                android:bottomLeftRadius="100dp"
-                android:bottomRightRadius="100dp"
+                android:topLeftRadius="10dp"
+                android:topRightRadius="10dp"
+                android:bottomLeftRadius="10dp"
+                android:bottomRightRadius="10dp"
                 />
+
+            <gradient
+                android:startColor="#fd5462fa"
+                android:centerColor="#c75462fa"
+                android:endColor="#665462fa"
+                android:angle="0" />
         </shape>
     </item>
 </selector>

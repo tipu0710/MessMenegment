@@ -18,6 +18,7 @@ public class PreviousData extends AppCompatActivity {
     private ArrayList<PreviousTable>previousTables;
     private AddMemberDBOperation addMemberDBOperation;
     private PreviousDataAdapter previousDataAdapter;
+    private String identifier;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,11 +26,13 @@ public class PreviousData extends AppCompatActivity {
         setContentView(R.layout.activity_previous_data);
         previousList = (RecyclerView) findViewById(R.id.previous_data_list);
 
+
+        identifier = MealInfo.getMonthName(MealInfo.getMonth())+" - "+MealInfo.getYear();
         previousList.setHasFixedSize(true);
         previousList.setLayoutManager(new LinearLayoutManager(this));
         previousTables = new ArrayList<>();
         addMemberDBOperation = new AddMemberDBOperation(this);
-        previousTables = addMemberDBOperation.getAllTables();
+        previousTables = addMemberDBOperation.getAllTables(identifier);
         previousDataAdapter = new PreviousDataAdapter(previousTables, this);
         previousList.setAdapter(previousDataAdapter);
     }
