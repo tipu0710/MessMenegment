@@ -26,22 +26,24 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/linearLayout">
+
         <EditText
             android:id="@+id/full_name"
-            android:hint="\t\t\t\t Full Name"
-            android:textColor="#ffffff"
-            android:textColorHint="#75deec"
-            android:layout_gravity="center"
-            android:gravity="left"
-            android:background="@drawable/round_button2"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            android:layout_marginRight="20dp"
-            android:layout_marginLeft="20dp"
-            android:padding="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textPersonName"/>
+            android:layout_gravity="center"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/round_button2"
+            android:gravity="left"
+            android:hint="\t\t\t\t Full Name"
+            android:inputType="textPersonName"
+            android:padding="10dp"
+            android:textColor="#ffffff"
+            android:textColorHint="#75deec" />
+
         <EditText
             android:id="@+id/phone_number"
             android:hint="\t\t\t\t Phone Number"
@@ -84,9 +86,9 @@
         android:paddingRight="50dp"
         android:paddingLeft="50dp"
         android:background="#7dced9"
+        android:layout_marginTop="25dp"
         android:textColor="#ffffff"
         android:layout_gravity="center"
-        android:layout_marginTop="25dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
 </RelativeLayout>

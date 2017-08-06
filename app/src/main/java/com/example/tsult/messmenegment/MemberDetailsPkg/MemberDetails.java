@@ -28,7 +28,7 @@ import com.example.tsult.messmenegment.ShowMealRatePkg.MealInfo;
 import java.text.DecimalFormat;
 import java.util.ResourceBundle;
 
-public class MemberDetails extends Activity {
+public class MemberDetails extends AppCompatActivity {
 
     private TextView mNameTV;
     private TextView mPhoneTV;

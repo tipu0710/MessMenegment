@@ -33,7 +33,7 @@ public class ShowMember extends Activity {
     private ArrayList<Member> members;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
-    private boolean status;
+    private boolean status, deposit;
 
 
     @Override
@@ -43,11 +43,18 @@ public class ShowMember extends Activity {
 
         textView = (TextView) findViewById(R.id.member);
         mRecyclerView = (RecyclerView) findViewById(R.id.recycler_view);
+        textView = (TextView) findViewById(R.id.member);
+
         addMemberDBOperation = new AddMemberDBOperation(this);
         members = new ArrayList<>();
         Intent intent = getIntent();
         status = intent.getBooleanExtra("status",false);
-        textView.setText(Html.fromHtml("<u>Member List</u>"));
+        if (status){
+            textView.setVisibility(View.GONE);
+        }else {
+            textView.setText(Html.fromHtml("<u>Member List</u>"));
+        }
+
         members = addMemberDBOperation.getMemberList(MealInfo.getMonthName(MealInfo.getMonth())+" - "+MealInfo.getYear());
         mRecyclerView.setHasFixedSize(true);
 

@@ -9,6 +9,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.provider.MediaStore;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -16,6 +17,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -166,7 +168,7 @@ public class AddBazaar extends AppCompatActivity {
         // convert from bitmap to byte array
         public static byte[] getBytes(Bitmap bitmap) {
             ByteArrayOutputStream stream = new ByteArrayOutputStream();
-            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
             return stream.toByteArray();
         }
 
@@ -182,7 +184,6 @@ public class AddBazaar extends AppCompatActivity {
         if (REQUEST_CAPTURE == requestCode){
             Bundle extra = data.getExtras();
             Bitmap photo = (Bitmap) extra.get("data");
-            showPic.setImageBitmap(photo);
             image = Converter.getBytes(photo);
         }
     }

@@ -7,14 +7,17 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
 import android.view.ContextMenu;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -55,40 +58,22 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
 
+        if (status){
+            holder.delete.setVisibility(View.GONE);
+            holder.edit.setVisibility(View.GONE);
+
+            LinearLayout.LayoutParams params= (LinearLayout.LayoutParams) holder.mName.getLayoutParams();
+            params.gravity = Gravity.CENTER;
+            holder.mName.setLayoutParams(params);
+        }
+
         holder.mName.setText(members.get(position).getmName());
 
-        if (i == 1){
-            final int sdk = android.os.Build.VERSION.SDK_INT;
-            if(sdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
-                holder.itemView.setBackgroundResource(R.drawable.round1);
-            } else {
-                holder.itemView.setBackgroundResource(R.drawable.round1);
-            }
-            i++;
-        }else if (i == 2){
-            final int sdk = android.os.Build.VERSION.SDK_INT;
-            if(sdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
-                holder.itemView.setBackgroundResource(R.drawable.round2);
-            } else {
-                holder.itemView.setBackgroundResource(R.drawable.round2);
-            }
-            i++;
-        }else if (i == 3){
-            final int sdk = android.os.Build.VERSION.SDK_INT;
-            if(sdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
-                holder.itemView.setBackgroundResource(R.drawable.round3);
-            } else {
-                holder.itemView.setBackgroundResource(R.drawable.round3);
-            }
-            i++;
-        }else {
-            final int sdk = android.os.Build.VERSION.SDK_INT;
-            if(sdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
-                holder.itemView.setBackgroundResource(R.drawable.round4);
-            } else {
-                holder.itemView.setBackgroundResource(R.drawable.round4);
-            }
-            i = 1;
+        final int sdk = android.os.Build.VERSION.SDK_INT;
+        if(sdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
+            holder.itemView.setBackgroundResource(R.drawable.round4);
+        } else {
+            holder.itemView.setBackgroundResource(R.drawable.round4);
         }
 
         holder.mName.setOnClickListener(new View.OnClickListener() {
@@ -156,27 +141,6 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
             }
         });
 
-        /*holder.mName.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                AlertDialog.Builder alert = new AlertDialog.Builder(context);
-                alert.setTitle("Select: ");
-                alert.setPositiveButton("Update", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                    }
-                });
-                alert.setNegativeButton("Delete", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                    }
-                });
-                alert.show();
-                return true;
-            }
-        });*/
     }
 
 

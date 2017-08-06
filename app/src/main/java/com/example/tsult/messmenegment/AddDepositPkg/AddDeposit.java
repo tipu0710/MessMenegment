@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.tsult.messmenegment.AddMealPkg.Meal;
@@ -43,7 +44,6 @@ public class AddDeposit extends AppCompatActivity {
         datePickBtn = (Button) findViewById(R.id.date_btn);
         addDepositBtn = (Button) findViewById(R.id.add_deposit);
         moneyEt = (EditText) findViewById(R.id.money_et);
-
         Calendar calendar = Calendar.getInstance(Locale.getDefault());
         month = calendar.get(Calendar.MONTH);
         day = calendar.get(Calendar.DAY_OF_MONTH);

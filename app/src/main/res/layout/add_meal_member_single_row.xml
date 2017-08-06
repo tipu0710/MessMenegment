@@ -6,12 +6,14 @@
     <TextView
         android:id="@+id/add_meal_member_name_tv"
         android:paddingLeft="20dp"
+        android:textColor="#75deec"
         android:text="Member 1"
         android:layout_weight="1"
         android:layout_width="0dp"
         android:layout_height="wrap_content" />
     <EditText
         android:id="@+id/add_meal_count_et"
+        android:textColor="#ffffff"
         android:layout_weight=".2"
         android:layout_width="0dp"
         android:layout_height="wrap_content"

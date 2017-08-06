@@ -43,13 +43,13 @@ public class ShowIndViMeal extends AppCompatActivity {
         }else {
             identifier = MealInfo.getMonthName(MealInfo.getMonth())+" - "+MealInfo.getYear();
         }
+
         nameTv.setText(mName);
 
         addMealDBOperation = new AddMealDBOperation(this, null);
         meals = new ArrayList<>();
         meals = addMealDBOperation.getIndMeal(mId, identifier);
-        for (int i=0; i<meals.size(); i++){
-        }
+
         mealList.setHasFixedSize(true);
         mealList.setLayoutManager(new LinearLayoutManager(this));
 

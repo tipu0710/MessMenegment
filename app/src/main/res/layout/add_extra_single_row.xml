@@ -8,6 +8,7 @@
         android:gravity="top"
         android:maxLines="500"
         android:text="Description"
+        android:textColor="#75deec"
         android:padding="10dp"
         android:layout_marginRight="10dp"
         android:layout_weight=".7"
@@ -16,6 +17,7 @@
     <TextView
         android:id="@+id/amount_single_row"
         android:layout_marginLeft="10dp"
+        android:textColor="#75deec"
         android:padding="10dp"
         android:layout_weight=".3"
         android:layout_width="0dp"

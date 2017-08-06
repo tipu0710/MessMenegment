@@ -39,38 +39,11 @@ public class AddBazaarAdapter extends RecyclerView.Adapter<AddBazaarAdapter.View
     @Override
     public void onBindViewHolder(ViewHolder holder, final int position) {
         holder.mNameTv.setText(members.get(position).getmName());
-        if (i == 1){
-            final int sdk = android.os.Build.VERSION.SDK_INT;
-            if(sdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
-                holder.itemView.setBackgroundResource(R.drawable.round1);
-            } else {
-                holder.itemView.setBackgroundResource(R.drawable.round1);
-            }
-            i++;
-        }else if (i == 2){
-            final int sdk = android.os.Build.VERSION.SDK_INT;
-            if(sdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
-                holder.itemView.setBackgroundResource(R.drawable.round2);
-            } else {
-                holder.itemView.setBackgroundResource(R.drawable.round2);
-            }
-            i++;
-        }else if (i == 3){
-            final int sdk = android.os.Build.VERSION.SDK_INT;
-            if(sdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
-                holder.itemView.setBackgroundResource(R.drawable.round3);
-            } else {
-                holder.itemView.setBackgroundResource(R.drawable.round3);
-            }
-            i++;
-        }else {
-            final int sdk = android.os.Build.VERSION.SDK_INT;
-            if(sdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
-                holder.itemView.setBackgroundResource(R.drawable.round4);
-            } else {
-                holder.itemView.setBackgroundResource(R.drawable.round4);
-            }
-            i = 1;
+        final int sdk = android.os.Build.VERSION.SDK_INT;
+        if(sdk < android.os.Build.VERSION_CODES.JELLY_BEAN) {
+            holder.itemView.setBackgroundResource(R.drawable.round4);
+        } else {
+            holder.itemView.setBackgroundResource(R.drawable.round4);
         }
         holder.mNameTv.setOnClickListener(new View.OnClickListener() {
             @Override
