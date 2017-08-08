@@ -94,7 +94,6 @@ public class AddBazaar extends AppCompatActivity {
             showDate = day + "/"+ (month+1) + "/"+year;
             identifier = MealInfo.getMonthName(MealInfo.getMonth())+" - "+ MealInfo.getYear();
             Bitmap bitmap = ((BitmapDrawable) showPic.getDrawable()).getBitmap();
-
             image = Converter.getBytes(bitmap);
         }
 
@@ -168,7 +167,7 @@ public class AddBazaar extends AppCompatActivity {
         // convert from bitmap to byte array
         public static byte[] getBytes(Bitmap bitmap) {
             ByteArrayOutputStream stream = new ByteArrayOutputStream();
-            bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream);
+            bitmap.compress(Bitmap.CompressFormat.PNG, 0, stream);
             return stream.toByteArray();
         }
 
@@ -184,6 +183,7 @@ public class AddBazaar extends AppCompatActivity {
         if (REQUEST_CAPTURE == requestCode){
             Bundle extra = data.getExtras();
             Bitmap photo = (Bitmap) extra.get("data");
+            showPic.setImageBitmap(photo);
             image = Converter.getBytes(photo);
         }
     }

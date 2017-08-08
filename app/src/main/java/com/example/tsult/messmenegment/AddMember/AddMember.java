@@ -53,7 +53,7 @@ public class AddMember extends Activity {
             mNameET.setText(mName);
             mPhone = intent.getStringExtra("phone");
             mPhoneET.setText(mPhone);
-            mEmail = intent.getStringExtra("emil");
+            mEmail = intent.getStringExtra("email");
             mEmailET.setText(mEmail);
             mAddBtn.setText("UPDATE");
         }

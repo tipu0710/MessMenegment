@@ -15,8 +15,9 @@ import com.example.tsult.messmenegment.ShowMealRatePkg.MealInfo;
 
 public class AddBazaarDBHelper{
 
-    public static final String BAZAAR_TABLE = "add_bazaar_table";
-    public static final String BAZAAR_MEMBER_ID = "member_id";
+    public static final String BAZAAR_TABLE = "add_bazaar_table"; //Table name
+
+    public static final String BAZAAR_MEMBER_ID = "member_id";    //column name
     public static final String BAZAAR_MEMBER_NAME = "member_name";
     public static final String BAZAAR_DATE = "bazaar_date";
     public static final String BAZAAR_COST = "bazaar_cost";
