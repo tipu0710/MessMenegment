@@ -55,6 +55,7 @@ class BazaarAdapter extends RecyclerView.Adapter<BazaarAdapter.ViewHolder>{
                 intent.putExtra("date", bazaars.get(position).getDate());
                 intent.putExtra("cost", bazaars.get(position).getCost());
                 intent.putExtra("image", bazaars.get(position).getMemo());
+                intent.putExtra("identifier",bazaars.get(position).getIdentifier());
                 context.startActivity(intent);
             }
         });

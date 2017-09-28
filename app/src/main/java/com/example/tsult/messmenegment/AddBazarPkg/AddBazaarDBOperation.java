@@ -60,6 +60,7 @@ public boolean UpdateBazaarList(Bazaar bazaar){
         this.open();
         ContentValues values = new ContentValues();
 
+        values.put(AddBazaarDBHelper.BAZAAR_ID, bazaar.getbId());
         values.put(AddBazaarDBHelper.BAZAAR_MEMBER_ID,bazaar.getmId());
         values.put(AddBazaarDBHelper.BAZAAR_MEMBER_NAME, bazaar.getmName());
         values.put(AddBazaarDBHelper.BAZAAR_DATE, bazaar.getDate());

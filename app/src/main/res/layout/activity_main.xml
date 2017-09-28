@@ -9,8 +9,9 @@
     tools:context="com.example.tsult.messmenegment.Home.MainActivity">
 
     <ImageView
-        android:src="@drawable/background"
+        android:src="@drawable/background2"
         android:scaleType="centerCrop"
+        android:layout_centerHorizontal="true"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
     <ImageView

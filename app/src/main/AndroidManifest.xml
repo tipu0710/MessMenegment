@@ -19,8 +19,9 @@
         android:theme="@style/AppTheme">
         <activity android:name=".Home.MainActivity">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"
-                    android:exported="true"/>
+                <action
+                    android:name="android.intent.action.MAIN"
+                    android:exported="true" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
@@ -37,7 +38,12 @@
         <activity android:name=".AddExtraPkg.AddExtra" />
         <activity android:name=".ShowMealRatePkg.ShowMealRate" />
         <activity android:name=".MemberDetailsPkg.SendMail" />
-        <activity android:name=".PreviousDataPkg.PreviousData"></activity>
+        <activity android:name=".PreviousDataPkg.PreviousData" />
+        <activity
+            android:name=".ShowPic.ShowMemo"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/title_activity_show_memo"
+            android:theme="@style/FullscreenTheme"></activity>
     </application>
 
 </manifest>

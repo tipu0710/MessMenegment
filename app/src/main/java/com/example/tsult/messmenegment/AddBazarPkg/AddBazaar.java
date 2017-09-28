@@ -25,6 +25,7 @@ import com.example.tsult.messmenegment.BazarList.BazarList;
 import com.example.tsult.messmenegment.Home.MainActivity;
 import com.example.tsult.messmenegment.R;
 import com.example.tsult.messmenegment.ShowMealRatePkg.MealInfo;
+import com.example.tsult.messmenegment.ShowPic.ShowMemo;
 
 import java.io.ByteArrayOutputStream;
 import java.net.URI;
@@ -83,6 +84,7 @@ public class AddBazaar extends AppCompatActivity {
             int c = intent.getIntExtra("cost",0);
             costEt.setText(String.valueOf(c));
             image = intent.getByteArrayExtra("image");
+            identifier = intent.getStringExtra("identifier");
             if (image.length>0){
                 Bitmap photo = Converter.getImage(image);
                 showPic.setImageBitmap(photo);
@@ -158,6 +160,16 @@ public class AddBazaar extends AppCompatActivity {
                 startActivityForResult(cameraIntent, REQUEST_CAPTURE);
             }
         });
+
+        showPic.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent(AddBazaar.this, ShowMemo.class);
+                intent1.putExtra("memo",image);
+                startActivity(intent1);
+            }
+        });
+
     }
 
 
@@ -167,7 +179,7 @@ public class AddBazaar extends AppCompatActivity {
         // convert from bitmap to byte array
         public static byte[] getBytes(Bitmap bitmap) {
             ByteArrayOutputStream stream = new ByteArrayOutputStream();
-            bitmap.compress(Bitmap.CompressFormat.PNG, 0, stream);
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
             return stream.toByteArray();
         }
 

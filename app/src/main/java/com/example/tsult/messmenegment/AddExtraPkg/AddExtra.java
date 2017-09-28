@@ -69,9 +69,9 @@ public class AddExtra extends AppCompatActivity {
                 String money = amountEt.getText().toString();
                 String des = descriptionEt.getText().toString();
                 if (money.isEmpty()){
-                    amountEt.setError(String.valueOf(R.string.error_msg));
+                    amountEt.setError(getString(R.string.error_msg));
                 }else if (des.isEmpty()){
-                    descriptionEt.setError(String.valueOf(R.string.error_msg));
+                    descriptionEt.setError(getString(R.string.error_msg));
                 }else {
                     if (condition){
                         Extra extra = new Extra(extraId, des, Integer.parseInt(money), identifier);

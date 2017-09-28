@@ -3,14 +3,14 @@
     <item xmlns:android="http://schemas.android.com/apk/res/android">
         <shape>
             <size android:height="40dp"></size>
-            <solid android:color="#56c4c5" />
-            <stroke android:color="#21c1c2"
+            <solid android:color="#0056c4c5" />
+            <stroke android:color="#00fdff"
                 android:width="2dp"/>
             <corners
-                android:topLeftRadius="100dp"
-                android:topRightRadius="100dp"
-                android:bottomLeftRadius="100dp"
-                android:bottomRightRadius="100dp"
+                android:topLeftRadius="10dp"
+                android:topRightRadius="10dp"
+                android:bottomLeftRadius="10dp"
+                android:bottomRightRadius="10dp"
                 />
         </shape>
     </item>

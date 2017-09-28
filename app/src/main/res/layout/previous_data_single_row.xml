@@ -5,7 +5,9 @@
 
     <Button
         android:id="@+id/table_name"
-        android:padding="10dp"
+        android:layout_margin="10dp"
+        android:textColor="#75deec"
+        android:background="@drawable/round4"
         android:layout_marginRight="10dp"
         android:layout_marginLeft="10dp"
         android:layout_weight="1"

@@ -3,7 +3,7 @@
     android:orientation="vertical"
     android:id="@+id/show_details"
     android:layout_width="wrap_content"
-    android:background="#a8212125"
+    android:background="#755472f5"
     android:padding="5dp"
     android:layout_gravity="center"
     android:layout_height="wrap_content">
@@ -11,6 +11,7 @@
     <Button
         android:id="@+id/show_meal_btn"
         android:layout_margin="3dp"
+        android:padding="3dp"
         android:background="@drawable/round4"
         android:layout_weight="1"
         android:layout_width="wrap_content"
@@ -20,7 +21,8 @@
     <Button
         android:id="@+id/show_deposit_btn"
         android:layout_margin="3dp"
-        android:background="@drawable/round3"
+        android:padding="3dp"
+        android:background="@drawable/round4"
         android:layout_weight="1"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
@@ -28,20 +30,21 @@
 
     <Button
         android:id="@+id/show_bazaar_btn"
-        android:layout_margin="1dp"
-        android:background="@drawable/round1"
+        android:layout_margin="3dp"
+        android:padding="3dp"
+        android:background="@drawable/round4"
         android:layout_weight="1"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
         android:text="Bazaar"/>
 
     <Button
-            android:id="@+id/show_extra_btn"
-            android:layout_margin="3dp"
-            android:background="@drawable/round2"
-            android:layout_weight="1"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:text="Extra"/>
-
+        android:id="@+id/show_extra_btn"
+        android:layout_margin="3dp"
+        android:padding="3dp"
+        android:background="@drawable/round4"
+        android:layout_weight="1"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:text="Extra"/>
 </LinearLayout>

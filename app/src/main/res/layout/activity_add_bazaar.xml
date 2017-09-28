@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context="com.example.tsult.messmenegment.AddBazarPkg.AddBazaar">
     <ImageView
-        android:src="@drawable/background"
+        android:src="@drawable/background2"
         android:scaleType="centerCrop"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

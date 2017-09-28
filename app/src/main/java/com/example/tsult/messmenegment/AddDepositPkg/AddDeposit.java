@@ -99,7 +99,7 @@ public class AddDeposit extends AppCompatActivity {
                 String money = moneyEt.getText().toString();
 
                 if (money.isEmpty()){
-                    moneyEt.setError(String.valueOf(R.string.error_msg));
+                    moneyEt.setError(getString(R.string.error_msg));
                 }else {
                     if (status){
                         Deposit deposit = new Deposit(depositID, id, Integer.parseInt(money), showDate, identifier);

@@ -8,6 +8,7 @@ import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -96,6 +97,8 @@ public class AddMealAdapter extends RecyclerView.Adapter<AddMealAdapter.ViewHold
             holder.addBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
+                        InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
+                        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
                     for (int i = 0; i<mealDetailses2.size(); i++){
                         Meal meal = new Meal(day, mealDetailses2.get(i).getmId(), mealDetailses2.get(i).getmName(), date, mealDetailses2.get(i).getMealNumber(), identifier);
                         if (!mealStatus){
