@@ -193,10 +193,12 @@ public class AddBazaar extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         if (REQUEST_CAPTURE == requestCode){
-            Bundle extra = data.getExtras();
-            Bitmap photo = (Bitmap) extra.get("data");
-            showPic.setImageBitmap(photo);
-            image = Converter.getBytes(photo);
+            if(resultCode == RESULT_OK){
+                Bundle extra = data.getExtras();
+                Bitmap photo = (Bitmap) extra.get("data");
+                showPic.setImageBitmap(photo);
+                image = Converter.getBytes(photo);
+            }
         }
     }
 
