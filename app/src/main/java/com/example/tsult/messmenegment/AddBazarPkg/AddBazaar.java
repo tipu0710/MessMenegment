@@ -9,6 +9,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.net.Uri;
 import android.os.Build;
 import android.provider.MediaStore;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -202,6 +203,7 @@ public class AddBazaar extends AppCompatActivity {
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.ECLAIR)
     public boolean hasCamera(){
         return getPackageManager().hasSystemFeature(PackageManager.FEATURE_CAMERA_ANY);
     }

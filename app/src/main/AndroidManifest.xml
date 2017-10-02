@@ -17,7 +17,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Home.MainActivity">
+        <activity android:name=".Home.MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action
                     android:name="android.intent.action.MAIN"
@@ -26,21 +27,34 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AddMember.AddMember" />
-        <activity android:name=".ShowMember.ShowMember" />
-        <activity android:name=".MemberDetailsPkg.MemberDetails" />
-        <activity android:name=".BazarList.BazarList" />
-        <activity android:name=".AddBazarPkg.AddBazaarMember" />
-        <activity android:name=".AddBazarPkg.AddBazaar" />
+        <activity android:name=".AddMember.AddMember"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ShowMember.ShowMember"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".MemberDetailsPkg.MemberDetails"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".BazarList.BazarList"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".AddBazarPkg.AddBazaarMember"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".AddBazarPkg.AddBazaar"
+            android:screenOrientation="portrait"/>
         <activity android:name=".AddMealPkg.AddMeal" />
-        <activity android:name=".AddMealPkg.ShowIndViMeal" />
-        <activity android:name=".AddDepositPkg.AddDeposit" />
-        <activity android:name=".AddExtraPkg.AddExtra" />
-        <activity android:name=".ShowMealRatePkg.ShowMealRate" />
-        <activity android:name=".MemberDetailsPkg.SendMail" />
-        <activity android:name=".PreviousDataPkg.PreviousData" />
+        <activity android:name=".AddMealPkg.ShowIndViMeal"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".AddDepositPkg.AddDeposit"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".AddExtraPkg.AddExtra"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".ShowMealRatePkg.ShowMealRate"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".MemberDetailsPkg.SendMail"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".PreviousDataPkg.PreviousData"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".ShowPic.ShowMemo"
+            android:screenOrientation="portrait"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_show_memo"
             android:theme="@style/FullscreenTheme"></activity>
