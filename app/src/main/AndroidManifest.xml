@@ -18,7 +18,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".Home.MainActivity"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:noHistory="true">
             <intent-filter>
                 <action
                     android:name="android.intent.action.MAIN"
@@ -28,30 +29,44 @@
             </intent-filter>
         </activity>
         <activity android:name=".AddMember.AddMember"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:noHistory="true"/>
         <activity android:name=".ShowMember.ShowMember"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:noHistory="true"/>
         <activity android:name=".MemberDetailsPkg.MemberDetails"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:noHistory="true"/>
         <activity android:name=".BazarList.BazarList"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:noHistory="true"/>
         <activity android:name=".AddBazarPkg.AddBazaarMember"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:noHistory="true"/>
         <activity android:name=".AddBazarPkg.AddBazaar"
-            android:screenOrientation="portrait"/>
-        <activity android:name=".AddMealPkg.AddMeal" />
+            android:screenOrientation="portrait"
+            android:noHistory="false"/>
+        <activity android:name=".AddMealPkg.AddMeal"
+            android:screenOrientation="portrait"
+            android:noHistory="true"/>
         <activity android:name=".AddMealPkg.ShowIndViMeal"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:noHistory="true"/>
         <activity android:name=".AddDepositPkg.AddDeposit"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:noHistory="true"/>
         <activity android:name=".AddExtraPkg.AddExtra"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:noHistory="true"/>
         <activity android:name=".ShowMealRatePkg.ShowMealRate"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:noHistory="true"/>
         <activity android:name=".MemberDetailsPkg.SendMail"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:noHistory="true"/>
         <activity android:name=".PreviousDataPkg.PreviousData"
-            android:screenOrientation="portrait"/>
+            android:screenOrientation="portrait"
+            android:noHistory="true"/>
         <activity
             android:name=".ShowPic.ShowMemo"
             android:screenOrientation="portrait"

@@ -1,5 +1,6 @@
 package com.example.tsult.messmenegment.AddMealPkg;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,12 +9,14 @@ import android.support.v7.widget.RecyclerView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.tsult.messmenegment.MemberDetailsPkg.MemberDetails;
 import com.example.tsult.messmenegment.R;
 import com.example.tsult.messmenegment.ShowMealRatePkg.MealInfo;
+import com.example.tsult.messmenegment.ShowMealRatePkg.ShowMealRate;
 
 import java.util.ArrayList;
 
-public class ShowIndViMeal extends AppCompatActivity {
+public class ShowIndViMeal extends Activity {
 
     private RecyclerView mealList;
     private AddMealDBOperation addMealDBOperation;
@@ -22,7 +25,7 @@ public class ShowIndViMeal extends AppCompatActivity {
 
     private TextView nameTv;
 
-    private String mName, identifier;
+    private String mName, identifier, mPhone, mEmail;
     private int mId;
     private boolean status;
 
@@ -37,6 +40,8 @@ public class ShowIndViMeal extends AppCompatActivity {
         Intent intent = getIntent();
         mName = intent.getStringExtra("name");
         mId = intent.getIntExtra("id",-1);
+        mPhone = intent.getStringExtra("phone");
+        mEmail = intent.getStringExtra("email");
         status = intent.getBooleanExtra("status", false);
         if (status){
             identifier = intent.getStringExtra("identifier");
@@ -56,5 +61,22 @@ public class ShowIndViMeal extends AppCompatActivity {
         showMealAdapter = new ShowMealAdapter(this, meals);
         mealList.setAdapter(showMealAdapter);
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        if (status){
+            Intent intent = new Intent(this, ShowMealRate.class);
+            intent.putExtra("identifier",identifier);
+            startActivity(intent);
+        }else {
+            Intent intent = new Intent(this, MemberDetails.class);
+            intent.putExtra("id",mId);
+            intent.putExtra("name",mName);
+            intent.putExtra("phone",mPhone);
+            intent.putExtra("email",mEmail);
+            startActivity(intent);
+        }
     }
 }

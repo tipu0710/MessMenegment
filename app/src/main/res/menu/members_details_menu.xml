@@ -6,7 +6,7 @@
         android:id="@+id/bazaar_list_menu"
         android:title="Bazaar list"
         app:showAsAction="never"
-        android:orderInCategory="1"
+        android:orderInCategory="3"
     ></item>
     <item
         android:id="@+id/meal_list_menu"
@@ -14,4 +14,10 @@
         app:showAsAction="never"
         android:orderInCategory="2"
     ></item>
+    <item
+        android:id="@+id/deposit_list_menu"
+        android:title="Deposit"
+        app:showAsAction="never"
+        android:orderInCategory="1"
+        ></item>
 </menu>

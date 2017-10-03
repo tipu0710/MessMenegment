@@ -12,8 +12,10 @@ import android.widget.Toast;
 
 import com.example.tsult.messmenegment.AddDepositPkg.AddDeposit;
 import com.example.tsult.messmenegment.AddDepositPkg.AddDepositAdapter;
+import com.example.tsult.messmenegment.Home.MainActivity;
 import com.example.tsult.messmenegment.R;
 import com.example.tsult.messmenegment.ShowMealRatePkg.MealInfo;
+import com.example.tsult.messmenegment.ShowMealRatePkg.ShowMealRate;
 
 import java.util.ArrayList;
 
@@ -43,7 +45,7 @@ public class AddExtra extends AppCompatActivity {
         final Intent intent = getIntent();
         condition = intent.getBooleanExtra("status",false);
         check = intent.getBooleanExtra("check", false);
-        if (check){
+        if (check && !condition){
             identifier = intent.getStringExtra("identifier");
             addExtraBtn.setVisibility(View.GONE);
             descriptionEt.setVisibility(View.GONE);
@@ -80,6 +82,12 @@ public class AddExtra extends AppCompatActivity {
                             Toast.makeText(AddExtra.this, "Successfully update", Toast.LENGTH_SHORT).show();
                             condition = false;
                             createList();
+                            if (check){
+                                identifier = intent.getStringExtra("identifier");
+                                addExtraBtn.setVisibility(View.GONE);
+                                descriptionEt.setVisibility(View.GONE);
+                                amountEt.setVisibility(View.GONE);
+                            }
                             descriptionEt.setText("");
                             amountEt.setText("");
                             addExtraBtn.setText("ADD");
@@ -108,8 +116,21 @@ public class AddExtra extends AppCompatActivity {
         extras = addExtraDBOperation.getExtraList(identifier);
         extraList.setHasFixedSize(true);
         extraList.setLayoutManager(new LinearLayoutManager(this));
-        addExtraAdapter = new AddExtraAdapter(this, extras);
+        addExtraAdapter = new AddExtraAdapter(this, extras, check);
         extraList.setAdapter(addExtraAdapter);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        if (check){
+            Intent intent = new Intent(this, ShowMealRate.class);
+            intent.putExtra("identifier",identifier);
+            startActivity(intent);
+        }else {
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        }
     }
 }
 

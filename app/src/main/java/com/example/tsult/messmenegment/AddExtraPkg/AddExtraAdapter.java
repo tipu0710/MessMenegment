@@ -20,10 +20,12 @@ public class AddExtraAdapter extends RecyclerView.Adapter<AddExtraAdapter.ViewHo
 
     private Context context;
     private ArrayList<Extra>extras;
+    private boolean check;
 
-    public AddExtraAdapter(Context context, ArrayList<Extra> extras) {
+    public AddExtraAdapter(Context context, ArrayList<Extra> extras, boolean check) {
         this.context = context;
         this.extras = extras;
+        this.check = check;
     }
 
     @Override
@@ -42,6 +44,7 @@ public class AddExtraAdapter extends RecyclerView.Adapter<AddExtraAdapter.ViewHo
             public void onClick(View v) {
                 Intent intent = new Intent(context, AddExtra.class);
                 intent.putExtra("status", true);
+                intent.putExtra("check",check);
                 intent.putExtra("extraId", extras.get(position).geteId());
                 intent.putExtra("description",extras.get(position).getDescription());
                 intent.putExtra("amount", extras.get(position).getAmount());

@@ -89,6 +89,7 @@ public class AddMember extends Activity {
                             Intent intent1 = new Intent(AddMember.this, ShowMember.class);
                             intent1.putExtra("status",false);
                             startActivity(intent1);
+                            finish();
                         }
                     }else {
                         if (email.isEmpty()){
@@ -137,6 +138,14 @@ public class AddMember extends Activity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        startActivity(new Intent(this, MainActivity.class));
+        if (value){
+            Intent intent1 = new Intent(AddMember.this, ShowMember.class);
+            intent1.putExtra("status",false);
+            startActivity(intent1);
+        }else {
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        }
+        finish();
     }
 }

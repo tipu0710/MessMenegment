@@ -60,6 +60,7 @@ public class AddBazaarAdapter extends RecyclerView.Adapter<AddBazaarAdapter.View
                 intent.putExtra("phone", phone);
                 intent.putExtra("email", email);
                 intent.putExtra("identifier", ident);
+                intent.putExtra("check",true);
                 context.startActivity(intent);
             }
         });

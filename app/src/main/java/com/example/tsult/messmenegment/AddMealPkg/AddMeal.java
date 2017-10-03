@@ -1,6 +1,7 @@
 package com.example.tsult.messmenegment.AddMealPkg;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -14,6 +15,7 @@ import com.example.tsult.messmenegment.AddBazarPkg.AddBazaarAdapter;
 import com.example.tsult.messmenegment.AddBazarPkg.Bazaar;
 import com.example.tsult.messmenegment.AddMember.AddMemberDBOperation;
 import com.example.tsult.messmenegment.AddMember.Member;
+import com.example.tsult.messmenegment.Home.MainActivity;
 import com.example.tsult.messmenegment.R;
 import com.example.tsult.messmenegment.ShowMealRatePkg.MealInfo;
 
@@ -86,5 +88,12 @@ public class AddMeal extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }

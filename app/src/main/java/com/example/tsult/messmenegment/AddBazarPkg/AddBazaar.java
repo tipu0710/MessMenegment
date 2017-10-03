@@ -26,6 +26,7 @@ import com.example.tsult.messmenegment.BazarList.BazarList;
 import com.example.tsult.messmenegment.Home.MainActivity;
 import com.example.tsult.messmenegment.R;
 import com.example.tsult.messmenegment.ShowMealRatePkg.MealInfo;
+import com.example.tsult.messmenegment.ShowMember.ShowMember;
 import com.example.tsult.messmenegment.ShowPic.ShowMemo;
 
 import java.io.ByteArrayOutputStream;
@@ -45,7 +46,8 @@ public class AddBazaar extends AppCompatActivity {
     private int year,month,day;
     private boolean condition;
     private byte[] image;
-    private String identifier;
+    private String identifier, mPhone, mEmail;
+    private boolean status, check;
 
     public static final int REQUEST_CAPTURE = 1;
 
@@ -68,6 +70,10 @@ public class AddBazaar extends AppCompatActivity {
         id = intent.getIntExtra("id", -1);
         mName = intent.getStringExtra("name");
         mNameTv.setText(mName);
+        mPhone = intent.getStringExtra("phone");
+        mEmail=intent.getStringExtra("email");
+        status = intent.getBooleanExtra("status",false);
+        check = intent.getBooleanExtra("check", false);
         addBazaarDBOperation = new AddBazaarDBOperation(id, this);
 
         if (!hasCamera()){
@@ -136,6 +142,7 @@ public class AddBazaar extends AppCompatActivity {
                             intent1.putExtra("id", id);
                             intent1.putExtra("name", mName);
                             startActivity(intent1);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         }else {
                             Toast.makeText(AddBazaar.this, "Failed to update!", Toast.LENGTH_SHORT).show();
                         }
@@ -210,8 +217,21 @@ public class AddBazaar extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(AddBazaar.this, MainActivity.class);
-        startActivity(intent);
         super.onBackPressed();
+        if (check){
+            Intent intent = new Intent(AddBazaar.this, AddBazaarMember.class);
+            startActivity(intent);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        }else {
+            Intent intent = new Intent(AddBazaar.this, BazarList.class);
+            intent.putExtra("id", id);
+            intent.putExtra("name", mName);
+            intent.putExtra("phone", mPhone);
+            intent.putExtra("email", mEmail);
+            intent.putExtra("identifier", identifier);
+            intent.putExtra("check", status);
+            startActivity(intent);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        }
     }
 }

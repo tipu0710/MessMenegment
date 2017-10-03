@@ -17,13 +17,16 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.tsult.messmenegment.AddDepositPkg.AddDeposit;
 import com.example.tsult.messmenegment.AddDepositPkg.AddDepositDBOperation;
+import com.example.tsult.messmenegment.AddDepositPkg.Deposit;
 import com.example.tsult.messmenegment.AddExtraPkg.AddExtraDBOperation;
 import com.example.tsult.messmenegment.AddMealPkg.AddMealDBOperation;
 import com.example.tsult.messmenegment.AddMealPkg.ShowIndViMeal;
 import com.example.tsult.messmenegment.BazarList.BazarList;
 import com.example.tsult.messmenegment.R;
 import com.example.tsult.messmenegment.ShowMealRatePkg.MealInfo;
+import com.example.tsult.messmenegment.ShowMember.ShowMember;
 
 import java.text.DecimalFormat;
 import java.util.ResourceBundle;
@@ -150,16 +153,35 @@ public class MemberDetails extends AppCompatActivity {
                 Intent intent = new Intent(MemberDetails.this, BazarList.class);
                 intent.putExtra("id",id);
                 intent.putExtra("name",mName);
+                intent.putExtra("phone",mPhone);
+                intent.putExtra("email",mEmail);
                 startActivity(intent);
                 break;
             case R.id.meal_list_menu:
                 Intent intent1 = new Intent(MemberDetails.this, ShowIndViMeal.class);
                 intent1.putExtra("id",id);
                 intent1.putExtra("name",mName);
+                intent1.putExtra("phone",mPhone);
+                intent1.putExtra("email",mEmail);
                 startActivity(intent1);
+                break;
+            case R.id.deposit_list_menu:
+                Intent intent2 = new Intent(MemberDetails.this, AddDeposit.class);
+                intent2.putExtra("id",id);
+                intent2.putExtra("name",mName);
+                intent2.putExtra("phone",mPhone);
+                intent2.putExtra("email",mEmail);
+                intent2.putExtra("memberDCheck", true);
+                startActivity(intent2);
                 break;
         }
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(this, ShowMember.class);
+        startActivity(intent);
+    }
 }

@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.example.tsult.messmenegment.AddBazarPkg.AddBazaar;
 import com.example.tsult.messmenegment.AddBazarPkg.Bazaar;
+import com.example.tsult.messmenegment.AddBazarPkg.BazaarerDetails;
 import com.example.tsult.messmenegment.R;
 
 import java.util.ArrayList;
@@ -25,10 +26,12 @@ class BazaarAdapter extends RecyclerView.Adapter<BazaarAdapter.ViewHolder>{
 
     private ArrayList<Bazaar>bazaars;
     private Context context;
+    private BazaarerDetails bazaarerDetails;
 
-    public BazaarAdapter(ArrayList<Bazaar> bazaars, Context context) {
+    public BazaarAdapter(ArrayList<Bazaar> bazaars, Context context, BazaarerDetails bazaarerDetails) {
         this.bazaars = bazaars;
         this.context = context;
+        this.bazaarerDetails = bazaarerDetails;
     }
 
     @Override
@@ -55,7 +58,10 @@ class BazaarAdapter extends RecyclerView.Adapter<BazaarAdapter.ViewHolder>{
                 intent.putExtra("date", bazaars.get(position).getDate());
                 intent.putExtra("cost", bazaars.get(position).getCost());
                 intent.putExtra("image", bazaars.get(position).getMemo());
+                intent.putExtra("phone", bazaarerDetails.getmPhone());
+                intent.putExtra("email",bazaarerDetails.getmEmail());
                 intent.putExtra("identifier",bazaars.get(position).getIdentifier());
+                intent.putExtra("status", bazaarerDetails.isCheck());
                 context.startActivity(intent);
             }
         });

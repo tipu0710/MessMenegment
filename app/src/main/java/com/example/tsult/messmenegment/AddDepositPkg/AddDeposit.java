@@ -1,12 +1,15 @@
 package com.example.tsult.messmenegment.AddDepositPkg;
 
+import android.app.Activity;
 import android.app.DatePickerDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -14,14 +17,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.tsult.messmenegment.AddMealPkg.Meal;
+import com.example.tsult.messmenegment.Home.MainActivity;
+import com.example.tsult.messmenegment.MemberDetailsPkg.MemberDetails;
 import com.example.tsult.messmenegment.R;
 import com.example.tsult.messmenegment.ShowMealRatePkg.MealInfo;
+import com.example.tsult.messmenegment.ShowMealRatePkg.ShowMealRate;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Locale;
 
-public class AddDeposit extends AppCompatActivity {
+public class AddDeposit extends Activity {
 
     private RecyclerView depositList;
     private Button datePickBtn, addDepositBtn;
@@ -30,8 +36,8 @@ public class AddDeposit extends AppCompatActivity {
     private ArrayList<Deposit>deposits;
     private AddDepositAdapter addDepositAdapter;
     private int id;
-    private String mName, showDate;
-    private boolean status, check;
+    private String mName, showDate, phone, email;
+    private boolean status, check, memberDcheck, isMDcheck;
     private int year,month,day, depositID;
     private String identifier;
 
@@ -51,15 +57,28 @@ public class AddDeposit extends AppCompatActivity {
 
         final Intent intent = getIntent();
         status = intent.getBooleanExtra("status",false);
+        memberDcheck = intent.getBooleanExtra("memberDCheck", false);
+        isMDcheck = intent.getBooleanExtra("isDcheck", false);
         id = intent.getIntExtra("id",-1);
         mName = intent.getStringExtra("name");
         check = intent.getBooleanExtra("check", false);
-        if (check){
+
+        if (!isMDcheck){
+            if (memberDcheck){
+                mName = intent.getStringExtra("name");
+                phone = intent.getStringExtra("phone");
+                datePickBtn.setVisibility(View.GONE);
+                addDepositBtn.setVisibility(View.GONE);
+                moneyEt.setVisibility(View.GONE);
+            }
+        }
+
+        if (check && !status){
             identifier = intent.getStringExtra("identifier");
             addDepositBtn.setVisibility(View.GONE);
             datePickBtn.setVisibility(View.GONE);
             moneyEt.setVisibility(View.GONE);
-        }else if (status){
+        }else if (status || isMDcheck){
             addDepositBtn.setText("UPDATE");
             showDate = intent.getStringExtra("date");
             int money = intent.getIntExtra("money",-1);
@@ -101,13 +120,24 @@ public class AddDeposit extends AppCompatActivity {
                 if (money.isEmpty()){
                     moneyEt.setError(getString(R.string.error_msg));
                 }else {
-                    if (status){
+                    InputMethodManager imm = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+                    if (status || isMDcheck){
                         Deposit deposit = new Deposit(depositID, id, Integer.parseInt(money), showDate, identifier);
                         boolean status1 = addDepositDBOperation.updateDepositList(deposit);
                         if (status1){
                             Toast.makeText(AddDeposit.this, "Successfully update", Toast.LENGTH_SHORT).show();
                             status = false;
+                            isMDcheck = false;
+
                             createList();
+                            if (memberDcheck || check){
+                                mName = intent.getStringExtra("name");
+                                phone = intent.getStringExtra("phone");
+                                datePickBtn.setVisibility(View.GONE);
+                                addDepositBtn.setVisibility(View.GONE);
+                                moneyEt.setVisibility(View.GONE);
+                            }
                             moneyEt.setText("");
                             addDepositBtn.setText("ADD");
 
@@ -138,9 +168,29 @@ public class AddDeposit extends AppCompatActivity {
         deposits = addDepositDBOperation.getDepositList(identifier);
         depositList.setHasFixedSize(true);
         depositList.setLayoutManager(new LinearLayoutManager(this));
-        addDepositAdapter = new AddDepositAdapter(this, deposits);
+        addDepositAdapter = new AddDepositAdapter(this, deposits, memberDcheck, check);
         depositList.setAdapter(addDepositAdapter);
     }
 
-
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        if (check){
+            Intent intent = new Intent(this, ShowMealRate.class);
+            intent.putExtra("identifier",identifier);
+            startActivity(intent);
+        }else if (memberDcheck){
+            Intent intent = new Intent(this, MemberDetails.class);
+            intent.putExtra("id",id);
+            intent.putExtra("name",mName);
+            intent.putExtra("phone",phone);
+            intent.putExtra("email",email);
+            startActivity(intent);
+        }
+        else
+        {
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        }
+    }
 }

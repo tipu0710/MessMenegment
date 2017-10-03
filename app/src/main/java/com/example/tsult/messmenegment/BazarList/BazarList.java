@@ -1,5 +1,6 @@
 package com.example.tsult.messmenegment.BazarList;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,14 +13,17 @@ import com.example.tsult.messmenegment.AddBazarPkg.AddBazaarAdapter;
 import com.example.tsult.messmenegment.AddBazarPkg.AddBazaarDBOperation;
 import com.example.tsult.messmenegment.AddBazarPkg.AddBazaarMember;
 import com.example.tsult.messmenegment.AddBazarPkg.Bazaar;
+import com.example.tsult.messmenegment.AddBazarPkg.BazaarerDetails;
 import com.example.tsult.messmenegment.Home.MainActivity;
+import com.example.tsult.messmenegment.MemberDetailsPkg.MemberDetails;
 import com.example.tsult.messmenegment.R;
 import com.example.tsult.messmenegment.ShowMealRatePkg.MealInfo;
+import com.example.tsult.messmenegment.ShowMealRatePkg.ShowMealRate;
 import com.example.tsult.messmenegment.ShowMember.ShowMember;
 
 import java.util.ArrayList;
 
-public class BazarList extends AppCompatActivity {
+public class BazarList extends Activity {
 
     private int id;
     private String mName;
@@ -29,7 +33,8 @@ public class BazarList extends AppCompatActivity {
     private ArrayList<Bazaar> bazaars;
     private RecyclerView.LayoutManager layoutManager;
     private RecyclerView.Adapter mAdapter;
-    private String identifier;
+    private String identifier, mPhone, mEmail;
+    private BazaarerDetails bazaarerDetails;
     private boolean check;
 
     @Override
@@ -41,7 +46,11 @@ public class BazarList extends AppCompatActivity {
         Intent intent = getIntent();
         id = intent.getIntExtra("id",-1);
         mName = intent.getStringExtra("name");
+        mPhone = intent.getStringExtra("phone");
+        mEmail = intent.getStringExtra("email");
         check = intent.getBooleanExtra("check", false);
+
+        bazaarerDetails = new BazaarerDetails(mName, id, mPhone, mEmail, check);
 
         if (check){
             identifier = intent.getStringExtra("identifier");
@@ -56,15 +65,25 @@ public class BazarList extends AppCompatActivity {
         layoutManager = new LinearLayoutManager(this);
         bazaarList.setLayoutManager(layoutManager);
 
-        mAdapter = new BazaarAdapter(bazaars, this);
+        mAdapter = new BazaarAdapter(bazaars, this, bazaarerDetails);
         bazaarList.setAdapter(mAdapter);
 
     }
 
     @Override
     public void onBackPressed() {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
         super.onBackPressed();
+        if (check){
+            Intent intent = new Intent(this, ShowMealRate.class);
+            intent.putExtra("table",identifier);
+            startActivity(intent);
+        }else {
+            Intent intent = new Intent(this, MemberDetails.class);
+            intent.putExtra("id",id);
+            intent.putExtra("name",mName);
+            intent.putExtra("phone",mPhone);
+            intent.putExtra("email",mEmail);
+            startActivity(intent);
+        }
     }
 }

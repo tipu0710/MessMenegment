@@ -14,6 +14,7 @@ import com.example.tsult.messmenegment.AddExtraPkg.AddExtraDBOperation;
 import com.example.tsult.messmenegment.AddMealPkg.AddMealDBOperation;
 import com.example.tsult.messmenegment.AddMember.AddMemberDBOperation;
 import com.example.tsult.messmenegment.AddMember.Member;
+import com.example.tsult.messmenegment.Home.MainActivity;
 import com.example.tsult.messmenegment.R;
 
 import java.text.DecimalFormat;
@@ -88,5 +89,9 @@ public class ShowMealRate extends Activity {
         memberList.setAdapter(mealRateAdapter);
     }
 
-
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(this, MainActivity.class));
+    }
 }

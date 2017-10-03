@@ -40,7 +40,6 @@ public class MealRateAdapter extends RecyclerView.Adapter<MealRateAdapter.ViewHo
     private String identifier;
     private AddMealDBOperation addMealDBOperation;
     private AddDepositDBOperation addDepositDBOperation;
-    private String name;
 
     public MealRateAdapter(Context context, ArrayList<Member> members, String identifier) {
         this.context = context;

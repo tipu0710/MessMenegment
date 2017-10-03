@@ -22,10 +22,13 @@ public class AddDepositAdapter extends RecyclerView.Adapter<AddDepositAdapter.Vi
 
     private Context context;
     private ArrayList<Deposit>deposits;
+    private boolean memberDcheck, check;
 
-    public AddDepositAdapter(Context context, ArrayList<Deposit> deposits) {
+    public AddDepositAdapter(Context context, ArrayList<Deposit> deposits, boolean memberDcheck, boolean check) {
         this.context = context;
         this.deposits = deposits;
+        this.memberDcheck = memberDcheck;
+        this.check = check;
     }
 
     @Override
@@ -44,12 +47,22 @@ public class AddDepositAdapter extends RecyclerView.Adapter<AddDepositAdapter.Vi
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(context, AddDeposit.class);
-                intent.putExtra("status", true);
+                if (memberDcheck){
+                    intent.putExtra("status", false);
+                }else {
+                    intent.putExtra("status", true);
+                }
+
                 intent.putExtra("id", deposits.get(position).getmId());
                 intent.putExtra("date",deposits.get(position).getDate());
                 intent.putExtra("money", deposits.get(position).getMoney());
                 intent.putExtra("depositId", deposits.get(position).getDepositId());
                 intent.putExtra("identifier", deposits.get(position).getIdentifier());
+
+                intent.putExtra("memberDCheck", memberDcheck);
+                intent.putExtra("check",check);
+                intent.putExtra("isDcheck",true);
+
                 context.startActivity(intent);
             }
         });

@@ -1,6 +1,7 @@
 package com.example.tsult.messmenegment.AddBazarPkg;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -8,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 
 import com.example.tsult.messmenegment.AddMember.AddMemberDBOperation;
 import com.example.tsult.messmenegment.AddMember.Member;
+import com.example.tsult.messmenegment.Home.MainActivity;
 import com.example.tsult.messmenegment.R;
 import com.example.tsult.messmenegment.ShowMealRatePkg.MealInfo;
 import com.example.tsult.messmenegment.ShowMember.MyAdapter;
@@ -40,5 +42,13 @@ public class AddBazaarMember extends Activity {
         mAdapter = new AddBazaarAdapter(members,this);
         memberList.setAdapter(mAdapter);
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
     }
 }

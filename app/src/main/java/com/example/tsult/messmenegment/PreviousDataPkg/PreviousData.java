@@ -1,11 +1,13 @@
 package com.example.tsult.messmenegment.PreviousDataPkg;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.example.tsult.messmenegment.AddMember.AddMemberDBOperation;
+import com.example.tsult.messmenegment.Home.MainActivity;
 import com.example.tsult.messmenegment.R;
 import com.example.tsult.messmenegment.ShowMealRatePkg.MealInfo;
 
@@ -35,5 +37,12 @@ public class PreviousData extends AppCompatActivity {
         previousTables = addMemberDBOperation.getAllTables(identifier);
         previousDataAdapter = new PreviousDataAdapter(previousTables, this);
         previousList.setAdapter(previousDataAdapter);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }
