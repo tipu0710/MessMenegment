@@ -1,6 +1,7 @@
 package com.example.tsult.messmenegment.MemberDetailsPkg;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -15,7 +16,8 @@ public class SendMail extends AppCompatActivity {
     private EditText sendToEt, subjectEt, bodyEt;
     private Button sendBtn;
 
-    private String email;
+    private String email, name, phone;
+    private int id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,8 +28,11 @@ public class SendMail extends AppCompatActivity {
         sendBtn = (Button) findViewById(R.id.send_btn);
 
         subjectEt.setFocusable(true);
-        Intent intent = getIntent();
+        final Intent intent = getIntent();
         email = intent.getStringExtra("mail");
+        id = intent.getIntExtra("id", -1);
+        name = intent.getStringExtra("name");
+        phone = intent.getStringExtra("phone");
         sendToEt.setText(email);
 
         sendBtn.setOnClickListener(new View.OnClickListener() {
@@ -42,10 +47,11 @@ public class SendMail extends AppCompatActivity {
                     bodyEt.setError(getString(R.string.error_msg));
                 }else {
                     Intent i = new Intent(Intent.ACTION_SEND);
-                    i.setType("message/rfc822");
-                    i.putExtra(Intent.EXTRA_EMAIL  , mail);
+                    i.setData(Uri.parse("mailto:"));
+                    i.putExtra(Intent.EXTRA_EMAIL  , new  String[]{mail});
                     i.putExtra(Intent.EXTRA_SUBJECT, subjectEt.getText().toString());
                     i.putExtra(Intent.EXTRA_TEXT   , body);
+                    i.setType("message/rfc822");
                     try {
                         startActivity(Intent.createChooser(i, "Send mail..."));
                     } catch (android.content.ActivityNotFoundException ex) {
@@ -54,5 +60,16 @@ public class SendMail extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(this, MemberDetails.class);
+        intent.putExtra("phone",phone);
+        intent.putExtra("name", name);
+        intent.putExtra("id", id);
+        intent.putExtra("email", email);
+        startActivity(intent);
     }
 }

@@ -14,6 +14,7 @@ import com.example.tsult.messmenegment.AddDepositPkg.AddDeposit;
 import com.example.tsult.messmenegment.AddDepositPkg.AddDepositAdapter;
 import com.example.tsult.messmenegment.Home.MainActivity;
 import com.example.tsult.messmenegment.R;
+import com.example.tsult.messmenegment.ShowMealRatePkg.Info;
 import com.example.tsult.messmenegment.ShowMealRatePkg.MealInfo;
 import com.example.tsult.messmenegment.ShowMealRatePkg.ShowMealRate;
 
@@ -124,8 +125,14 @@ public class AddExtra extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         if (check){
+            Info info = MealInfo.Preference.getInfo(this);
             Intent intent = new Intent(this, ShowMealRate.class);
-            intent.putExtra("identifier",identifier);
+            if (info.isSaved()){
+                intent.putExtra("table",info.getIdentifier());
+                intent.putExtra("status", true);
+            }else {
+                intent.putExtra("table",identifier);
+            }
             startActivity(intent);
         }else {
             Intent intent = new Intent(this, MainActivity.class);

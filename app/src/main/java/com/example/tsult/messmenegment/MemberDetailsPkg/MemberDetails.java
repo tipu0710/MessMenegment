@@ -72,7 +72,7 @@ public class MemberDetails extends AppCompatActivity {
 
         identifier = MealInfo.getMonthName(MealInfo.getMonth())+" - "+MealInfo.getYear();
 
-        Intent intent = getIntent();
+        final Intent intent = getIntent();
         mName = intent.getStringExtra("name");
         mPhone = intent.getStringExtra("phone");
         mEmail = intent.getStringExtra("email");
@@ -131,6 +131,9 @@ public class MemberDetails extends AppCompatActivity {
                 }else {
                     Intent intent1 = new Intent(MemberDetails.this, SendMail.class);
                     intent1.putExtra("mail",mEmail);
+                    intent1.putExtra("phone", mPhone);
+                    intent1.putExtra("name", mName);
+                    intent1.putExtra("id", id);
                     startActivity(intent1);
                 }
             }

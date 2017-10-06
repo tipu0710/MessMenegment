@@ -10,6 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.tsult.messmenegment.AddBazarPkg.AddBazaar;
+import com.example.tsult.messmenegment.AddBazarPkg.BazaarerDetails;
 import com.example.tsult.messmenegment.R;
 
 import java.util.ArrayList;
@@ -23,12 +24,14 @@ public class AddDepositAdapter extends RecyclerView.Adapter<AddDepositAdapter.Vi
     private Context context;
     private ArrayList<Deposit>deposits;
     private boolean memberDcheck, check;
+    private BazaarerDetails bazaarerDetails;
 
-    public AddDepositAdapter(Context context, ArrayList<Deposit> deposits, boolean memberDcheck, boolean check) {
+    public AddDepositAdapter(Context context, ArrayList<Deposit> deposits, boolean memberDcheck, boolean check, BazaarerDetails bazaarerDetails) {
         this.context = context;
         this.deposits = deposits;
         this.memberDcheck = memberDcheck;
         this.check = check;
+        this.bazaarerDetails = bazaarerDetails;
     }
 
     @Override
@@ -49,6 +52,9 @@ public class AddDepositAdapter extends RecyclerView.Adapter<AddDepositAdapter.Vi
                 Intent intent = new Intent(context, AddDeposit.class);
                 if (memberDcheck){
                     intent.putExtra("status", false);
+                    intent.putExtra("name", bazaarerDetails.getmName());
+                    intent.putExtra("phone", bazaarerDetails.getmPhone());
+                    intent.putExtra("email", bazaarerDetails.getmEmail());
                 }else {
                     intent.putExtra("status", true);
                 }

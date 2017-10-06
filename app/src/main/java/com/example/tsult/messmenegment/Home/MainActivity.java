@@ -3,6 +3,7 @@ package com.example.tsult.messmenegment.Home;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -50,7 +51,7 @@ public class MainActivity extends Activity{
         button_list = findViewById(R.id.button_view);
         layout = findViewById(R.id.layout);
 
-
+        MealInfo.Preference.SaveInfo(this, MealInfo.getMonthName(MealInfo.getMonth())+" - "+ MealInfo.getYear(), false);
         addMemberBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -136,6 +137,7 @@ public class MainActivity extends Activity{
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+        MealInfo.Preference.ClearPreference(this);
         Intent intent = new Intent(Intent.ACTION_MAIN);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intent.addCategory(Intent.CATEGORY_HOME);

@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.example.tsult.messmenegment.MemberDetailsPkg.MemberDetails;
 import com.example.tsult.messmenegment.R;
+import com.example.tsult.messmenegment.ShowMealRatePkg.Info;
 import com.example.tsult.messmenegment.ShowMealRatePkg.MealInfo;
 import com.example.tsult.messmenegment.ShowMealRatePkg.ShowMealRate;
 
@@ -67,8 +68,14 @@ public class ShowIndViMeal extends Activity {
     public void onBackPressed() {
         super.onBackPressed();
         if (status){
+            Info info = MealInfo.Preference.getInfo(this);
             Intent intent = new Intent(this, ShowMealRate.class);
-            intent.putExtra("identifier",identifier);
+            if (info.isSaved()){
+                intent.putExtra("table",info.getIdentifier());
+                intent.putExtra("status", true);
+            }else {
+                intent.putExtra("table",identifier);
+            }
             startActivity(intent);
         }else {
             Intent intent = new Intent(this, MemberDetails.class);

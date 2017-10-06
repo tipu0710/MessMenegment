@@ -2,6 +2,8 @@ package com.example.tsult.messmenegment.ShowMealRatePkg;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.support.annotation.Nullable;
 import android.widget.Toast;
 
 import com.example.tsult.messmenegment.AddBazarPkg.AddBazaarDBOperation;
@@ -13,8 +15,11 @@ import com.example.tsult.messmenegment.AddMember.AddMemberDBOperation;
 import com.example.tsult.messmenegment.ShowMember.ShowMember;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Locale;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * Created by tsult on 17-Jul-17.
@@ -30,6 +35,7 @@ public class MealInfo {
     private int meal, bazaar;
     private double rate;
     private String identifier;
+    public static String PRE_NAME = "preference";
 
     public MealInfo(Context context, String identifier) {
         this.context = context;
@@ -165,4 +171,27 @@ public class MealInfo {
         }
     }
 
+    public static class Preference{
+        public static void SaveInfo(Context context, String identifier, boolean isSaved){
+            SharedPreferences preferences = context.getSharedPreferences(PRE_NAME, Context.MODE_PRIVATE);
+            SharedPreferences.Editor saveIt;
+            saveIt = preferences.edit();
+            saveIt.putString("identifier", identifier);
+            saveIt.putBoolean("isSaved", isSaved);
+            saveIt.commit();
+        }
+
+        public static Info getInfo(Context context){
+            SharedPreferences preferences = context.getSharedPreferences(PRE_NAME, Context.MODE_PRIVATE);
+            Info info = new Info(preferences.getString("identifier", getMonthName(getMonth())+" - "+ getYear()), preferences.getBoolean("isSaved", false));
+            return info;
+        }
+        public static void ClearPreference(Context context){
+            SharedPreferences preferences = context.getSharedPreferences(PRE_NAME, Context.MODE_PRIVATE);
+            SharedPreferences.Editor saveIt;
+            saveIt = preferences.edit();
+            saveIt.clear();
+            saveIt.commit();
+        }
+    }
 }

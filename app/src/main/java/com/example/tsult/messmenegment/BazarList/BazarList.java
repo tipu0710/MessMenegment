@@ -17,6 +17,7 @@ import com.example.tsult.messmenegment.AddBazarPkg.BazaarerDetails;
 import com.example.tsult.messmenegment.Home.MainActivity;
 import com.example.tsult.messmenegment.MemberDetailsPkg.MemberDetails;
 import com.example.tsult.messmenegment.R;
+import com.example.tsult.messmenegment.ShowMealRatePkg.Info;
 import com.example.tsult.messmenegment.ShowMealRatePkg.MealInfo;
 import com.example.tsult.messmenegment.ShowMealRatePkg.ShowMealRate;
 import com.example.tsult.messmenegment.ShowMember.ShowMember;
@@ -74,8 +75,14 @@ public class BazarList extends Activity {
     public void onBackPressed() {
         super.onBackPressed();
         if (check){
+            Info info = MealInfo.Preference.getInfo(this);
             Intent intent = new Intent(this, ShowMealRate.class);
-            intent.putExtra("table",identifier);
+            if (info.isSaved()){
+                intent.putExtra("table",info.getIdentifier());
+                intent.putExtra("status", true);
+            }else {
+                intent.putExtra("table",identifier);
+            }
             startActivity(intent);
         }else {
             Intent intent = new Intent(this, MemberDetails.class);

@@ -19,6 +19,7 @@ import com.example.tsult.messmenegment.AddExtraPkg.AddExtraDBOperation;
 import com.example.tsult.messmenegment.AddMealPkg.AddMealDBOperation;
 import com.example.tsult.messmenegment.AddMember.AddMemberDBOperation;
 import com.example.tsult.messmenegment.R;
+import com.example.tsult.messmenegment.ShowMealRatePkg.MealInfo;
 import com.example.tsult.messmenegment.ShowMealRatePkg.ShowMealRate;
 
 import java.util.ArrayList;
@@ -51,6 +52,7 @@ public class PreviousDataAdapter extends RecyclerView.Adapter<PreviousDataAdapte
         holder.tableName.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                MealInfo.Preference.SaveInfo(context, identifier, true);
                 Intent intent = new Intent(context, ShowMealRate.class);
                 intent.putExtra("table",identifier);
                 intent.putExtra("status", true);

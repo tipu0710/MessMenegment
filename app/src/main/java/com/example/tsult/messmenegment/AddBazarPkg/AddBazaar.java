@@ -47,7 +47,7 @@ public class AddBazaar extends AppCompatActivity {
     private boolean condition;
     private byte[] image;
     private String identifier, mPhone, mEmail;
-    private boolean status, check;
+    private boolean status, goBackStatus, check;
 
     public static final int REQUEST_CAPTURE = 1;
 
@@ -72,7 +72,8 @@ public class AddBazaar extends AppCompatActivity {
         mNameTv.setText(mName);
         mPhone = intent.getStringExtra("phone");
         mEmail=intent.getStringExtra("email");
-        status = intent.getBooleanExtra("status",false);
+        goBackStatus = intent.getBooleanExtra("status",false);
+        status = goBackStatus;
         check = intent.getBooleanExtra("check", false);
         addBazaarDBOperation = new AddBazaarDBOperation(id, this);
 
@@ -141,6 +142,10 @@ public class AddBazaar extends AppCompatActivity {
                             Intent intent1 = new Intent(AddBazaar.this, BazarList.class);
                             intent1.putExtra("id", id);
                             intent1.putExtra("name", mName);
+                            intent1.putExtra("phone", mPhone);
+                            intent1.putExtra("email", mEmail);
+                            intent1.putExtra("identifier", identifier);
+                            intent1.putExtra("check", goBackStatus);
                             startActivity(intent1);
                             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
                         }else {
@@ -221,7 +226,6 @@ public class AddBazaar extends AppCompatActivity {
         if (check){
             Intent intent = new Intent(AddBazaar.this, AddBazaarMember.class);
             startActivity(intent);
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
         }else {
             Intent intent = new Intent(AddBazaar.this, BazarList.class);
             intent.putExtra("id", id);
@@ -231,7 +235,6 @@ public class AddBazaar extends AppCompatActivity {
             intent.putExtra("identifier", identifier);
             intent.putExtra("check", status);
             startActivity(intent);
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
         }
     }
 }

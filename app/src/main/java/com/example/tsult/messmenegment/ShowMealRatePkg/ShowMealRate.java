@@ -92,6 +92,7 @@ public class ShowMealRate extends Activity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
+        MealInfo.Preference.ClearPreference(this);
         startActivity(new Intent(this, MainActivity.class));
     }
 }
