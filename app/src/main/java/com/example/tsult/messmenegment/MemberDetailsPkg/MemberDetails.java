@@ -25,7 +25,9 @@ import com.example.tsult.messmenegment.AddMealPkg.AddMealDBOperation;
 import com.example.tsult.messmenegment.AddMealPkg.ShowIndViMeal;
 import com.example.tsult.messmenegment.BazarList.BazarList;
 import com.example.tsult.messmenegment.R;
+import com.example.tsult.messmenegment.ShowMealRatePkg.Info;
 import com.example.tsult.messmenegment.ShowMealRatePkg.MealInfo;
+import com.example.tsult.messmenegment.ShowMealRatePkg.ShowMealRate;
 import com.example.tsult.messmenegment.ShowMember.ShowMember;
 
 import java.text.DecimalFormat;
@@ -45,6 +47,7 @@ public class MemberDetails extends AppCompatActivity {
     private ImageButton emailBtn;
 
     private MealInfo mealInfo;
+    private Info info;
     private AddMealDBOperation addMealDBOperation;
     private AddDepositDBOperation addDepositDBOperation;
     private AddExtraDBOperation addExtraDBOperation;
@@ -56,6 +59,8 @@ public class MemberDetails extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_member_details);
+
+        info = MealInfo.Preference.getInfo(this);
 
         emailBtn = (ImageButton) findViewById(R.id.email_btn);
         callBtn = (ImageButton) findViewById(R.id.call_btn);
@@ -70,7 +75,12 @@ public class MemberDetails extends AppCompatActivity {
         totalExtraCostTv = (TextView) findViewById(R.id.total_extra_tv);
         perPersonExtraCostTv = (TextView) findViewById(R.id.ind_extra_tv);
 
-        identifier = MealInfo.getMonthName(MealInfo.getMonth())+" - "+MealInfo.getYear();
+        if (info.isSaved()){
+            identifier = info.getIdentifier();
+        }else
+        {
+            identifier = MealInfo.getMonthName(MealInfo.getMonth())+" - "+MealInfo.getYear();
+        }
 
         final Intent intent = getIntent();
         mName = intent.getStringExtra("name");
@@ -184,7 +194,16 @@ public class MemberDetails extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent intent = new Intent(this, ShowMember.class);
-        startActivity(intent);
+        if (info.isSaved()){
+            Intent intent = new Intent(this, ShowMealRate.class);
+            intent.putExtra("table",info.getIdentifier());
+            intent.putExtra("status", true);
+            startActivity(intent);
+            MealInfo.Preference.ClearPreference(this);
+        }else {
+            Intent intent = new Intent(this, ShowMember.class);
+            startActivity(intent);
+        }
+
     }
 }

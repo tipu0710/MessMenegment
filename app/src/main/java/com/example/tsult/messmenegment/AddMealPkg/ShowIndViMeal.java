@@ -25,7 +25,7 @@ public class ShowIndViMeal extends Activity {
     private RecyclerView.Adapter showMealAdapter;
 
     private TextView nameTv;
-
+    private Info info;
     private String mName, identifier, mPhone, mEmail;
     private int mId;
     private boolean status;
@@ -37,7 +37,7 @@ public class ShowIndViMeal extends Activity {
 
         mealList = (RecyclerView) findViewById(R.id.ind_meal_list);
         nameTv = (TextView) findViewById(R.id.ind_member_name);
-
+        info = MealInfo.Preference.getInfo(this);
         Intent intent = getIntent();
         mName = intent.getStringExtra("name");
         mId = intent.getIntExtra("id",-1);
@@ -46,6 +46,8 @@ public class ShowIndViMeal extends Activity {
         status = intent.getBooleanExtra("status", false);
         if (status){
             identifier = intent.getStringExtra("identifier");
+        }else if (info.isSaved()){
+            identifier = info.getIdentifier();
         }else {
             identifier = MealInfo.getMonthName(MealInfo.getMonth())+" - "+MealInfo.getYear();
         }
@@ -68,7 +70,6 @@ public class ShowIndViMeal extends Activity {
     public void onBackPressed() {
         super.onBackPressed();
         if (status){
-            Info info = MealInfo.Preference.getInfo(this);
             Intent intent = new Intent(this, ShowMealRate.class);
             if (info.isSaved()){
                 intent.putExtra("table",info.getIdentifier());

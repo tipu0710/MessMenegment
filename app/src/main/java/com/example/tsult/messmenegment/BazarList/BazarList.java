@@ -37,11 +37,14 @@ public class BazarList extends Activity {
     private String identifier, mPhone, mEmail;
     private BazaarerDetails bazaarerDetails;
     private boolean check;
+    private Info info;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_bazar_list);
+
+        info = MealInfo.Preference.getInfo(this);
 
         bazaarList = (RecyclerView) findViewById(R.id.ind_bazaar_list);
         Intent intent = getIntent();
@@ -55,7 +58,10 @@ public class BazarList extends Activity {
 
         if (check){
             identifier = intent.getStringExtra("identifier");
-        }else {
+        }else if (info.isSaved()){
+            identifier = info.getIdentifier();
+        }else
+         {
             identifier = MealInfo.getMonthName(MealInfo.getMonth())+" - "+MealInfo.getYear();
         }
 

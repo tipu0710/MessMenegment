@@ -166,4 +166,26 @@ public class AddMemberDBOperation {
         return previousTables;
     }
 
+    public Member MemberDetails(int id, String identifier){
+        this.open();
+
+        Cursor cursor = sqLiteDatabase.rawQuery("select * from "+AddMemberDatabaseHelper.MEMBER_LIST_TABLE+ " where "+AddMemberDatabaseHelper.IDENTIFIER+ " = '"+ identifier+ "' and "+ AddMemberDatabaseHelper.MEMBER_ID+" = "+ id, null);
+        cursor.moveToFirst();
+
+        if (cursor.getCount()>0){
+
+            int mId = cursor.getInt(cursor.getColumnIndex(AddMemberDatabaseHelper.MEMBER_ID));
+            String mName = cursor.getString(cursor.getColumnIndex(AddMemberDatabaseHelper.MEMBER_NAME));
+            String mPhone = cursor.getString(cursor.getColumnIndex(AddMemberDatabaseHelper.MEMBER_PHONE));
+            String mEmail = cursor.getString(cursor.getColumnIndex(AddMemberDatabaseHelper.MEMBER_EMAIL));
+            cursor.moveToNext();
+            Member member = new Member(mId,mName,mPhone,mEmail, identifier);
+
+        }
+
+        cursor.close();
+        this.close();
+        return member;
+    }
+
 }

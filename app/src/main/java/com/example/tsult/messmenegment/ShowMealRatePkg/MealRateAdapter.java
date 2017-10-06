@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -21,6 +22,7 @@ import com.example.tsult.messmenegment.AddMealPkg.AddMealDBOperation;
 import com.example.tsult.messmenegment.AddMealPkg.ShowIndViMeal;
 import com.example.tsult.messmenegment.AddMember.Member;
 import com.example.tsult.messmenegment.BazarList.BazarList;
+import com.example.tsult.messmenegment.MemberDetailsPkg.MemberDetails;
 import com.example.tsult.messmenegment.PreviousDataPkg.PreviousData;
 import com.example.tsult.messmenegment.R;
 
@@ -73,10 +75,25 @@ public class MealRateAdapter extends RecyclerView.Adapter<MealRateAdapter.ViewHo
                 dialog.setCancelable(true);
                 dialog.setContentView(R.layout.custom_dialoge);
 
-                TextView meal = (TextView) dialog.findViewById(R.id.show_meal_btn);
-                TextView deposit = (TextView) dialog.findViewById(R.id.show_deposit_btn);
-                TextView bazaar = (TextView) dialog.findViewById(R.id.show_bazaar_btn);
-                TextView extra = (TextView) dialog.findViewById(R.id.show_extra_btn);
+                Button meal = (Button) dialog.findViewById(R.id.show_meal_btn);
+                Button deposit = (Button) dialog.findViewById(R.id.show_deposit_btn);
+                Button bazaar = (Button) dialog.findViewById(R.id.show_bazaar_btn);
+                Button extra = (Button) dialog.findViewById(R.id.show_extra_btn);
+                Button details = (Button) dialog.findViewById(R.id.show_details_btn);
+
+                details.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        MealInfo.Preference.SaveInfo(context, identifier, true);
+                        Intent intent1 = new Intent(context, MemberDetails.class);
+                        intent1.putExtra("id", members.get(position).getmId());
+                        intent1.putExtra("phone", members.get(position).getmPhone());
+                        intent1.putExtra("email", members.get(position).getnEmail());
+                        intent1.putExtra("name", members.get(position).getmName());
+                        context.startActivity(intent1);
+                        dialog.dismiss();
+                    }
+                });
 
                 meal.setOnClickListener(new View.OnClickListener() {
                     @Override

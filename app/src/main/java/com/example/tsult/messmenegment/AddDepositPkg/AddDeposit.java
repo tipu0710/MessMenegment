@@ -44,11 +44,15 @@ public class AddDeposit extends Activity {
     private int year,month,day, depositID;
     private String identifier;
     private BazaarerDetails bazaarerDetails;
+    private Info info;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_deposit);
+
+        info = MealInfo.Preference.getInfo(this);
+
 
         depositList = (RecyclerView) findViewById(R.id.deposit_list);
         datePickBtn = (Button) findViewById(R.id.date_btn);
@@ -80,8 +84,13 @@ public class AddDeposit extends Activity {
             }
         }
 
-        if (check && !status){
+        if (check && !status && !info.isSaved()){
             identifier = intent.getStringExtra("identifier");
+            addDepositBtn.setVisibility(View.GONE);
+            datePickBtn.setVisibility(View.GONE);
+            moneyEt.setVisibility(View.GONE);
+        }else if (!status && info.isSaved()){
+            identifier = info.getIdentifier();
             addDepositBtn.setVisibility(View.GONE);
             datePickBtn.setVisibility(View.GONE);
             moneyEt.setVisibility(View.GONE);
@@ -91,9 +100,7 @@ public class AddDeposit extends Activity {
             int money = intent.getIntExtra("money",-1);
             depositID = intent.getIntExtra("depositId",-1);
             moneyEt.setText(String.valueOf(money));
-
             identifier = intent.getStringExtra("identifier");
-
         }else {
             showDate = day + "/"+ (month+1) + "/"+year;
             identifier = MealInfo.getMonthName(MealInfo.getMonth())+" - "+MealInfo.getYear();
