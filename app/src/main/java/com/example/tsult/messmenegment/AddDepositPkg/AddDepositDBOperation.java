@@ -102,9 +102,14 @@ public class AddDepositDBOperation {
         this.open();
         Cursor cursor = sqLiteDatabase.rawQuery("select sum("+ AddDepositDBHelper.MONEY+") as "+ COLUMN+ " from "+AddDepositDBHelper.TABLE_NAME+ " where "+AddDepositDBHelper.MEMBER_ID+" = "+id+ " and "+ AddDepositDBHelper.IDENTIFIER+" = '"+identifier+"'" ,null);
         cursor.moveToFirst();
-        allMeal = cursor.getInt(cursor.getColumnIndex(COLUMN));
-        cursor.close();
+        if (cursor.getCount()> 0){
+            allMeal = cursor.getInt(cursor.getColumnIndex(COLUMN));
+        }else {
+            allMeal = 0;
+        }
 
+        cursor.close();
+        this.close();
         return allMeal;
     }
 

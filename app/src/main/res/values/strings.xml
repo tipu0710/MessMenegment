@@ -1,8 +1,17 @@
 <resources>
-    <string name="app_name">Mess Management</string>
+    <string name="app_name">Meal Guard</string>
     <string name="error_msg">This field must not be empty</string>
 
     <string name="title_activity_show_memo">ShowMemo</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="title_activity_main2">Main2Activity</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="text_outside_circle_button_text_normal">Add Member</string>
+    <string name="text_outside_circle_button_text_highlighted">Add Member</string>
+    <string name="text_outside_circle_button_text_unable">What</string>
 </resources>

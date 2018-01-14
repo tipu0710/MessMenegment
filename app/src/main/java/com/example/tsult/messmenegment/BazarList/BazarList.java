@@ -14,6 +14,7 @@ import com.example.tsult.messmenegment.AddBazarPkg.AddBazaarDBOperation;
 import com.example.tsult.messmenegment.AddBazarPkg.AddBazaarMember;
 import com.example.tsult.messmenegment.AddBazarPkg.Bazaar;
 import com.example.tsult.messmenegment.AddBazarPkg.BazaarerDetails;
+import com.example.tsult.messmenegment.Home.Main2Activity;
 import com.example.tsult.messmenegment.Home.MainActivity;
 import com.example.tsult.messmenegment.MemberDetailsPkg.MemberDetails;
 import com.example.tsult.messmenegment.R;
@@ -62,7 +63,7 @@ public class BazarList extends Activity {
             identifier = info.getIdentifier();
         }else
          {
-            identifier = MealInfo.getMonthName(MealInfo.getMonth())+" - "+MealInfo.getYear();
+            identifier = MealInfo.getYear()+" - "+MealInfo.getMonth();
         }
 
         addBazaarDBOperation = new AddBazaarDBOperation(id, this);
@@ -80,7 +81,7 @@ public class BazarList extends Activity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        if (check){
+        /*if (check){
             Info info = MealInfo.Preference.getInfo(this);
             Intent intent = new Intent(this, ShowMealRate.class);
             if (info.isSaved()){
@@ -97,6 +98,9 @@ public class BazarList extends Activity {
             intent.putExtra("phone",mPhone);
             intent.putExtra("email",mEmail);
             startActivity(intent);
-        }
+        }*/
+
+        Intent intent = new Intent(this, Main2Activity.class);
+        startActivity(intent);
     }
 }

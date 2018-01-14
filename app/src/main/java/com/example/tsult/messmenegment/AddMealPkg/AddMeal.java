@@ -15,6 +15,7 @@ import com.example.tsult.messmenegment.AddBazarPkg.AddBazaarAdapter;
 import com.example.tsult.messmenegment.AddBazarPkg.Bazaar;
 import com.example.tsult.messmenegment.AddMember.AddMemberDBOperation;
 import com.example.tsult.messmenegment.AddMember.Member;
+import com.example.tsult.messmenegment.Home.Main2Activity;
 import com.example.tsult.messmenegment.Home.MainActivity;
 import com.example.tsult.messmenegment.R;
 import com.example.tsult.messmenegment.ShowMealRatePkg.MealInfo;
@@ -50,7 +51,7 @@ public class AddMeal extends AppCompatActivity {
         day = calendar.get(Calendar.DAY_OF_MONTH);
         showDate = day + "/"+ (month+1) + "/"+year;
         datePickerBtn.setText(showDate);
-        identifier = MealInfo.getMonthName(MealInfo.getMonth())+" - "+MealInfo.getYear();
+        identifier =MealInfo.getYear()+" - "+ MealInfo.getMonth();
         datePickerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -93,7 +94,7 @@ public class AddMeal extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, Main2Activity.class);
         startActivity(intent);
     }
 }

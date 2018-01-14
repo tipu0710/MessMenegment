@@ -14,6 +14,7 @@ import com.example.tsult.messmenegment.AddExtraPkg.AddExtraDBOperation;
 import com.example.tsult.messmenegment.AddMealPkg.AddMealDBOperation;
 import com.example.tsult.messmenegment.AddMember.AddMemberDBOperation;
 import com.example.tsult.messmenegment.AddMember.Member;
+import com.example.tsult.messmenegment.Home.Main2Activity;
 import com.example.tsult.messmenegment.Home.MainActivity;
 import com.example.tsult.messmenegment.R;
 
@@ -53,7 +54,7 @@ public class ShowMealRate extends Activity {
         if (status){
             identifier = intent.getStringExtra("table");
         }else {
-            identifier = MealInfo.getMonthName(MealInfo.getMonth())+" - "+MealInfo.getYear();
+            identifier =MealInfo.getYear()+" - "+ MealInfo.getMonth();
         }
 
         getControl();
@@ -93,6 +94,6 @@ public class ShowMealRate extends Activity {
     public void onBackPressed() {
         super.onBackPressed();
         MealInfo.Preference.ClearPreference(this);
-        startActivity(new Intent(this, MainActivity.class));
+        startActivity(new Intent(this, Main2Activity.class));
     }
 }

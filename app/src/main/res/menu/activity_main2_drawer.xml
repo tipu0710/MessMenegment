@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/add_member_btn"
+            android:icon="@drawable/ic_adduser"
+            android:title="Add Member" />
+        <item
+            android:id="@+id/show_member_btn"
+            android:icon="@drawable/ic_showmember"
+            android:title="Show Members" />
+        <item
+            android:id="@+id/add_bazaar_btn"
+            android:icon="@drawable/ic_addbazaar"
+            android:title="Add Bazaar" />
+        <item
+            android:id="@+id/add_meal_btn"
+            android:icon="@drawable/ic_add_meal"
+            android:title="Add Meal" />
+        <item
+            android:id="@+id/add_deposit_btn"
+            android:icon="@drawable/ic_deposit"
+            android:title="Add Deposit"/>
+        <item
+            android:id="@+id/add_extra_btn"
+            android:icon="@drawable/ic_extra"
+            android:title="Add Extra"/>
+        <item
+            android:id="@+id/show_previous_data_btn"
+            android:icon="@drawable/ic_previous"
+            android:title="Previous Data"/>
+    </group>
+
+    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Share" />
+            <item
+                android:id="@+id/nav_send"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Send" />
+        </menu>
+    </item>
+
+</menu>

@@ -50,6 +50,7 @@ public class MealInfo {
     }
 
     public static double getDepositInfo(Context context, int id, String identifier){
+
         AddDepositDBOperation addDepositDBOperation = new AddDepositDBOperation(context, id);
         int deposit = addDepositDBOperation.getIndividualDeposit(id, identifier);
 
@@ -194,4 +195,6 @@ public class MealInfo {
             saveIt.commit();
         }
     }
+
+
 }

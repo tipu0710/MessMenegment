@@ -7,6 +7,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.example.tsult.messmenegment.AddMember.AddMemberDBOperation;
+import com.example.tsult.messmenegment.Home.Main2Activity;
 import com.example.tsult.messmenegment.Home.MainActivity;
 import com.example.tsult.messmenegment.R;
 import com.example.tsult.messmenegment.ShowMealRatePkg.MealInfo;
@@ -29,7 +30,7 @@ public class PreviousData extends AppCompatActivity {
         previousList = (RecyclerView) findViewById(R.id.previous_data_list);
 
 
-        identifier = MealInfo.getMonthName(MealInfo.getMonth())+" - "+MealInfo.getYear();
+        identifier =MealInfo.getYear() +" - "+ MealInfo.getMonth();
         previousList.setHasFixedSize(true);
         previousList.setLayoutManager(new LinearLayoutManager(this));
         previousTables = new ArrayList<>();
@@ -42,7 +43,7 @@ public class PreviousData extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, Main2Activity.class);
         startActivity(intent);
     }
 }

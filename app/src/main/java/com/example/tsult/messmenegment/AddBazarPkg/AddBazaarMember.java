@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 
 import com.example.tsult.messmenegment.AddMember.AddMemberDBOperation;
 import com.example.tsult.messmenegment.AddMember.Member;
+import com.example.tsult.messmenegment.Home.Main2Activity;
 import com.example.tsult.messmenegment.Home.MainActivity;
 import com.example.tsult.messmenegment.R;
 import com.example.tsult.messmenegment.ShowMealRatePkg.MealInfo;
@@ -33,7 +34,7 @@ public class AddBazaarMember extends Activity {
 
         addMemberDBOperation = new AddMemberDBOperation(this);
         members = new ArrayList<>();
-        members = addMemberDBOperation.getMemberList(MealInfo.getMonthName(MealInfo.getMonth())+" - "+MealInfo.getYear());
+        members = addMemberDBOperation.getMemberList(MealInfo.getYear()+" - "+MealInfo.getMonth());
         memberList.setHasFixedSize(true);
 
         mLayoutManager = new LinearLayoutManager(this);
@@ -47,7 +48,7 @@ public class AddBazaarMember extends Activity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent intent = new Intent(this, MainActivity.class);
+        Intent intent = new Intent(this, Main2Activity.class);
         startActivity(intent);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_CLEAR_TASK);
     }

@@ -142,7 +142,12 @@ public class AddMealDBOperation {
         this.open();
         Cursor cursor = sqLiteDatabase.rawQuery("select sum("+ AddMealDBHelper.MEAL+") as "+ COLUMN+ " from "+AddMealDBHelper.TABLE_NAME+ " where "+AddMealDBHelper.MEMBER_ID+" = "+id+ " and "+ AddMealDBHelper.IDENTIFIER+" = '"+identifier+"'" ,null);
         cursor.moveToFirst();
-        allMeal = cursor.getInt(cursor.getColumnIndex(COLUMN));
+        if (cursor.getCount()>0){
+            allMeal = cursor.getInt(cursor.getColumnIndex(COLUMN));
+        }else {
+            allMeal = 0;
+        }
+
         cursor.close();
         this.close();
         return allMeal;

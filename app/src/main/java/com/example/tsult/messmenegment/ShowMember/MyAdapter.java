@@ -1,5 +1,6 @@
 package com.example.tsult.messmenegment.ShowMember;
 
+import android.app.Dialog;
 import android.content.ClipData;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -16,6 +17,8 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -126,13 +129,14 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
         holder.delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 AlertDialog.Builder warning = new AlertDialog.Builder(context);
                 warning.setTitle("Warning!!");
                 warning.setMessage(Html.fromHtml("If you delete any member, you will lose all of these data: <p><ul><li> Member</li><li> Meal</li><li> Bazaar</li><li> Deposit</li></ul><p>Do you really want to delete?"));
                 warning.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        MealInfo mealInfo = new MealInfo(context, MealInfo.getMonthName(MealInfo.getMonth())+" - "+MealInfo.getYear());
+                        MealInfo mealInfo = new MealInfo(context, MealInfo.getYear()+" - "+MealInfo.getMonth());
                         mealInfo.deleteMember(members.get(position).getmId());
                     }
                 });
@@ -156,8 +160,8 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
         public ViewHolder(View itemView) {
             super(itemView);
             mName = (TextView) itemView.findViewById(R.id.member_name);
-            delete = (ImageButton) itemView.findViewById(R.id.delete_member);
-            edit = (ImageButton) itemView.findViewById(R.id.edit_member);
+            delete = (ImageButton) itemView.findViewById(R.id.call);
+            edit = (ImageButton) itemView.findViewById(R.id.mail);
         }
     }
 }

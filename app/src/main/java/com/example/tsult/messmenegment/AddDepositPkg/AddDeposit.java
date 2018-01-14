@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 import com.example.tsult.messmenegment.AddBazarPkg.BazaarerDetails;
 import com.example.tsult.messmenegment.AddMealPkg.Meal;
+import com.example.tsult.messmenegment.Home.Main2Activity;
 import com.example.tsult.messmenegment.Home.MainActivity;
 import com.example.tsult.messmenegment.MemberDetailsPkg.MemberDetails;
 import com.example.tsult.messmenegment.R;
@@ -103,7 +104,7 @@ public class AddDeposit extends Activity {
             identifier = intent.getStringExtra("identifier");
         }else {
             showDate = day + "/"+ (month+1) + "/"+year;
-            identifier = MealInfo.getMonthName(MealInfo.getMonth())+" - "+MealInfo.getYear();
+            identifier = MealInfo.getYear()+" - "+MealInfo.getMonth();
         }
 
         addDepositDBOperation = new AddDepositDBOperation(this, id);
@@ -196,7 +197,7 @@ public class AddDeposit extends Activity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        if (check){
+        /*if (check){
             Info info = MealInfo.Preference.getInfo(this);
             Intent intent = new Intent(this, ShowMealRate.class);
             if (info.isSaved()){
@@ -223,6 +224,8 @@ public class AddDeposit extends Activity {
         {
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
-        }
+        }*/
+
+        startActivity(new Intent(AddDeposit.this, Main2Activity.class));
     }
 }

@@ -19,6 +19,7 @@ import android.widget.Toast;
 
 import com.example.tsult.messmenegment.AddMember.AddMemberDBOperation;
 import com.example.tsult.messmenegment.AddMember.Member;
+import com.example.tsult.messmenegment.Home.Main2Activity;
 import com.example.tsult.messmenegment.Home.MainActivity;
 import com.example.tsult.messmenegment.R;
 import com.example.tsult.messmenegment.ShowMealRatePkg.MealInfo;
@@ -33,7 +34,7 @@ public class ShowMember extends Activity {
     private ArrayList<Member> members;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
-    private boolean status, deposit;
+    private boolean status;
 
 
     @Override
@@ -55,7 +56,7 @@ public class ShowMember extends Activity {
             textView.setText(Html.fromHtml("<u>Member List</u>"));
         }
 
-        members = addMemberDBOperation.getMemberList(MealInfo.getMonthName(MealInfo.getMonth())+" - "+MealInfo.getYear());
+        members = addMemberDBOperation.getMemberList(MealInfo.getYear()+" - "+MealInfo.getMonth());
         mRecyclerView.setHasFixedSize(true);
 
         mLayoutManager = new LinearLayoutManager(this);
@@ -68,6 +69,6 @@ public class ShowMember extends Activity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        startActivity(new Intent(this, MainActivity.class));
+        startActivity(new Intent(this, Main2Activity.class));
     }
 }

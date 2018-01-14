@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import com.example.tsult.messmenegment.AddDepositPkg.AddDeposit;
 import com.example.tsult.messmenegment.AddDepositPkg.AddDepositAdapter;
+import com.example.tsult.messmenegment.Home.Main2Activity;
 import com.example.tsult.messmenegment.Home.MainActivity;
 import com.example.tsult.messmenegment.R;
 import com.example.tsult.messmenegment.ShowMealRatePkg.Info;
@@ -60,7 +61,7 @@ public class AddExtra extends AppCompatActivity {
             addExtraBtn.setText("UPDATE");
             identifier = intent.getStringExtra("identifier");
         }else {
-            identifier = MealInfo.getMonthName(MealInfo.getMonth())+" - "+MealInfo.getYear();
+            identifier = MealInfo.getYear()+" - "+MealInfo.getMonth();
         }
 
         addExtraDBOperation = new AddExtraDBOperation(this);
@@ -135,7 +136,7 @@ public class AddExtra extends AppCompatActivity {
             }
             startActivity(intent);
         }else {
-            Intent intent = new Intent(this, MainActivity.class);
+            Intent intent = new Intent(this, Main2Activity.class);
             startActivity(intent);
         }
     }

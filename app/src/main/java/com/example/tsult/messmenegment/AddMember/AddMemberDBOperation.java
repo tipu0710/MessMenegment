@@ -127,7 +127,7 @@ public class AddMemberDBOperation {
     public ArrayList<PreviousTable> getAllTables(String identifier){
         ArrayList<PreviousTable>previousTables = new ArrayList<>();
         this.open();
-        Cursor cursor = sqLiteDatabase.rawQuery("select "+ AddMemberDatabaseHelper.IDENTIFIER + " from "+ AddMemberDatabaseHelper.MEMBER_LIST_TABLE+ " union "+"select "+ AddMemberDatabaseHelper.IDENTIFIER + " from "+ AddMemberDatabaseHelper.MEMBER_LIST_TABLE ,null);
+        Cursor cursor = sqLiteDatabase.rawQuery("select "+ AddMemberDatabaseHelper.IDENTIFIER + " from "+ AddMemberDatabaseHelper.MEMBER_LIST_TABLE+ " union "+"select "+ AddMemberDatabaseHelper.IDENTIFIER + " from "+ AddMemberDatabaseHelper.MEMBER_LIST_TABLE +" order by "+ AddMemberDatabaseHelper.IDENTIFIER +" desc",null);
         Assert.assertNotNull(cursor);
         cursor.moveToFirst();
 
@@ -135,7 +135,7 @@ public class AddMemberDBOperation {
             for (int i =1; i<=cursor.getCount(); i++){
                 String table = cursor.getString(0);
                 cursor.moveToNext();
-                if (table.equals(MealInfo.getMonthName(MealInfo.getMonth())+" - "+MealInfo.getYear())){
+                if (table.equals(MealInfo.getYear()+" - "+MealInfo.getMonth())){
                     continue;
                 }else {
                     ArrayList<Member> members = new ArrayList<>();
@@ -165,27 +165,4 @@ public class AddMemberDBOperation {
         this.close();
         return previousTables;
     }
-
-    public Member MemberDetails(int id, String identifier){
-        this.open();
-
-        Cursor cursor = sqLiteDatabase.rawQuery("select * from "+AddMemberDatabaseHelper.MEMBER_LIST_TABLE+ " where "+AddMemberDatabaseHelper.IDENTIFIER+ " = '"+ identifier+ "' and "+ AddMemberDatabaseHelper.MEMBER_ID+" = "+ id, null);
-        cursor.moveToFirst();
-
-        if (cursor.getCount()>0){
-
-            int mId = cursor.getInt(cursor.getColumnIndex(AddMemberDatabaseHelper.MEMBER_ID));
-            String mName = cursor.getString(cursor.getColumnIndex(AddMemberDatabaseHelper.MEMBER_NAME));
-            String mPhone = cursor.getString(cursor.getColumnIndex(AddMemberDatabaseHelper.MEMBER_PHONE));
-            String mEmail = cursor.getString(cursor.getColumnIndex(AddMemberDatabaseHelper.MEMBER_EMAIL));
-            cursor.moveToNext();
-            Member member = new Member(mId,mName,mPhone,mEmail, identifier);
-
-        }
-
-        cursor.close();
-        this.close();
-        return member;
-    }
-
 }

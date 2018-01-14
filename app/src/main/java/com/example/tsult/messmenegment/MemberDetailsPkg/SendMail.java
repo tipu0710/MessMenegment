@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.tsult.messmenegment.Home.Main2Activity;
 import com.example.tsult.messmenegment.R;
 
 public class SendMail extends AppCompatActivity {
@@ -65,11 +66,7 @@ public class SendMail extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent intent = new Intent(this, MemberDetails.class);
-        intent.putExtra("phone",phone);
-        intent.putExtra("name", name);
-        intent.putExtra("id", id);
-        intent.putExtra("email", email);
+        Intent intent = new Intent(this, Main2Activity.class);
         startActivity(intent);
     }
 }

@@ -79,7 +79,7 @@ public class MemberDetails extends AppCompatActivity {
             identifier = info.getIdentifier();
         }else
         {
-            identifier = MealInfo.getMonthName(MealInfo.getMonth())+" - "+MealInfo.getYear();
+            identifier =MealInfo.getYear()+" - "+ MealInfo.getMonth();
         }
 
         final Intent intent = getIntent();

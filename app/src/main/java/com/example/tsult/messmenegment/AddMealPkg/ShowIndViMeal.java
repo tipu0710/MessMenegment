@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.tsult.messmenegment.Home.Main2Activity;
 import com.example.tsult.messmenegment.MemberDetailsPkg.MemberDetails;
 import com.example.tsult.messmenegment.R;
 import com.example.tsult.messmenegment.ShowMealRatePkg.Info;
@@ -49,7 +50,7 @@ public class ShowIndViMeal extends Activity {
         }else if (info.isSaved()){
             identifier = info.getIdentifier();
         }else {
-            identifier = MealInfo.getMonthName(MealInfo.getMonth())+" - "+MealInfo.getYear();
+            identifier = MealInfo.getYear()+" - "+MealInfo.getMonth();
         }
 
         nameTv.setText(mName);
@@ -69,7 +70,7 @@ public class ShowIndViMeal extends Activity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        if (status){
+        /*if (status){
             Intent intent = new Intent(this, ShowMealRate.class);
             if (info.isSaved()){
                 intent.putExtra("table",info.getIdentifier());
@@ -79,12 +80,15 @@ public class ShowIndViMeal extends Activity {
             }
             startActivity(intent);
         }else {
-            Intent intent = new Intent(this, MemberDetails.class);
+            Intent intent = new Intent(this, Main2Activity.class);
             intent.putExtra("id",mId);
             intent.putExtra("name",mName);
             intent.putExtra("phone",mPhone);
             intent.putExtra("email",mEmail);
             startActivity(intent);
-        }
+        }*/
+
+        Intent intent = new Intent(this, Main2Activity.class);
+        startActivity(intent);
     }
 }

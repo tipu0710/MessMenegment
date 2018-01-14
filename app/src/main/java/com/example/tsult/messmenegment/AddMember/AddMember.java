@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.example.tsult.messmenegment.AddMealPkg.AddMealDBOperation;
 import com.example.tsult.messmenegment.AddMealPkg.Meal;
+import com.example.tsult.messmenegment.Home.Main2Activity;
 import com.example.tsult.messmenegment.Home.MainActivity;
 import com.example.tsult.messmenegment.R;
 import com.example.tsult.messmenegment.ShowMealRatePkg.MealInfo;
@@ -44,7 +45,7 @@ public class AddMember extends Activity {
         mEmailET = (EditText) findViewById(R.id.email);
         mAddBtn = (Button) findViewById(R.id.add_member_info);
 
-        identifier = MealInfo.getMonthName(MealInfo.getMonth())+" - "+MealInfo.getYear();
+        identifier = MealInfo.getYear()+" - "+MealInfo.getMonth();
         Intent intent = getIntent();
         value = intent.getBooleanExtra("status",false);
         if (value){
@@ -143,7 +144,7 @@ public class AddMember extends Activity {
             intent1.putExtra("status",false);
             startActivity(intent1);
         }else {
-            Intent intent = new Intent(this, MainActivity.class);
+            Intent intent = new Intent(this, Main2Activity.class);
             startActivity(intent);
         }
         finish();

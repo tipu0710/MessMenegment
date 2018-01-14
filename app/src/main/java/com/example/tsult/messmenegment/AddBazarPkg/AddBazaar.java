@@ -23,6 +23,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.tsult.messmenegment.BazarList.BazarList;
+import com.example.tsult.messmenegment.Home.Main2Activity;
 import com.example.tsult.messmenegment.Home.MainActivity;
 import com.example.tsult.messmenegment.R;
 import com.example.tsult.messmenegment.ShowMealRatePkg.MealInfo;
@@ -113,7 +114,6 @@ public class AddBazaar extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 DatePickerDialog dpd = new DatePickerDialog(AddBazaar.this,dateListener,year,month,day);
-                dpd.getDatePicker().setMinDate(System.currentTimeMillis() - 1000);
                 dpd.show();
             }
             private DatePickerDialog.OnDateSetListener dateListener = new DatePickerDialog.OnDateSetListener() {
@@ -223,7 +223,7 @@ public class AddBazaar extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        if (check){
+        /*if (check){
             Intent intent = new Intent(AddBazaar.this, AddBazaarMember.class);
             startActivity(intent);
         }else {
@@ -235,6 +235,9 @@ public class AddBazaar extends AppCompatActivity {
             intent.putExtra("identifier", identifier);
             intent.putExtra("check", status);
             startActivity(intent);
-        }
+        }*/
+
+        Intent intent = new Intent(this, Main2Activity.class);
+        startActivity(intent);
     }
 }
