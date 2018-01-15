@@ -2,6 +2,7 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal"
+    android:paddingBottom="80dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
     <LinearLayout
@@ -31,7 +32,7 @@
         android:gravity="right"
         android:layout_weight="1"
         android:layout_width="0dp"
-        android:checked="true"
+        android:checked="false"
         android:layout_height="wrap_content" />
 
 </LinearLayout>
