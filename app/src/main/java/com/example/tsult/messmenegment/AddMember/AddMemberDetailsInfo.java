@@ -8,14 +8,17 @@ public class AddMemberDetailsInfo {
     private String mName;
     private String mPhone;
     private int contactId;
+    private boolean isChecked;
 
     public AddMemberDetailsInfo() {
     }
 
-    public AddMemberDetailsInfo(String mName, String mPhone) {
+    public AddMemberDetailsInfo(String mName, String mPhone, boolean isChecked) {
         this.mName = mName;
         this.mPhone = mPhone;
+        this.isChecked = isChecked;
     }
+
 
     public String getmName() {
         return mName;
@@ -35,6 +38,14 @@ public class AddMemberDetailsInfo {
 
     public int getContactId() {
         return contactId;
+    }
+
+    public boolean isCheckedContact() {
+        return isChecked;
+    }
+
+    public void setChecked(boolean checked) {
+        isChecked = checked;
     }
 
     public void setContactId(int contactId) {

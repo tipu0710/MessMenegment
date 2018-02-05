@@ -103,7 +103,7 @@ public class AddBazaar extends AppCompatActivity {
             identifier = intent.getStringExtra("identifier");
         }else {
             showDate = day + "/"+ (month+1) + "/"+year;
-            identifier = MealInfo.getMonthName(MealInfo.getMonth())+" - "+ MealInfo.getYear();
+            identifier = MealInfo.getYear()+" - "+MealInfo.getMonth();
             Bitmap bitmap = ((BitmapDrawable) showPic.getDrawable()).getBitmap();
             image = Converter.getBytes(bitmap);
         }

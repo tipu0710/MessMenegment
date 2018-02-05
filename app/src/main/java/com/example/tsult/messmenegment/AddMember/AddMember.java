@@ -83,7 +83,7 @@ public class AddMember extends Activity {
                     mPhoneET.setError(getString(R.string.error_msg));
                 }else {
                     if (value){
-                        Member member = new Member(mId, name, phone, email, identifier);
+                        Member member = new Member(mId, name, phone, email, identifier, false);
                         boolean id = addMemberDBOperation.UpdateMemberList(member);
                         if (id){
                             Toast.makeText(AddMember.this, "Successfully update!", Toast.LENGTH_SHORT).show();

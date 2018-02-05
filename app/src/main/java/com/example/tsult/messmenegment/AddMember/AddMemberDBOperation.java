@@ -92,7 +92,7 @@ public class AddMemberDBOperation {
             String mPhone = cursor.getString(cursor.getColumnIndex(AddMemberDatabaseHelper.MEMBER_PHONE));
             String mEmail = cursor.getString(cursor.getColumnIndex(AddMemberDatabaseHelper.MEMBER_EMAIL));
             cursor.moveToNext();
-            members.add(new Member(mId,mName,mPhone,mEmail, identifier));
+            members.add(new Member(mId,mName,mPhone,mEmail, identifier, false));
         }
 
         }

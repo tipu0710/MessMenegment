@@ -10,16 +10,18 @@ public class Member {
     private String nEmail;
     private int mId;
     private String identifier;
+    private boolean isTrue;
 
     public Member() {
     }
 
-    public Member(int mId, String mName, String mPhone, String nEmail, String identifier) {
+    public Member(int mId, String mName, String mPhone, String nEmail, String identifier, boolean isTrue) {
         this.mName = mName;
         this.mPhone = mPhone;
         this.nEmail = nEmail;
         this.mId = mId;
         this.identifier = identifier;
+        this.isTrue = isTrue;
     }
 
     public Member(String mName, String mPhone, String nEmail, String identifier) {
@@ -67,5 +69,13 @@ public class Member {
 
     public void setnEmail(String nEmail) {
         this.nEmail = nEmail;
+    }
+
+    public boolean isTrue() {
+        return isTrue;
+    }
+
+    public void setTrue(boolean aTrue) {
+        isTrue = aTrue;
     }
 }

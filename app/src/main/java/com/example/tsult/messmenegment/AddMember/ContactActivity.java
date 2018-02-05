@@ -52,8 +52,12 @@ public class ContactActivity extends AppCompatActivity {
 
     private void getContactList() {
         ContentResolver contentResolver = getContentResolver();
-        Cursor cursorAndroidContact;
-        cursorAndroidContact = contentResolver.query(ContactsContract.Contacts.CONTENT_URI, null, null, null, "UPPER(" + ContactsContract.Contacts.DISPLAY_NAME + ") ASC");
+        Cursor cursorAndroidContact = null;
+        try {
+            cursorAndroidContact = contentResolver.query(ContactsContract.Contacts.CONTENT_URI, null, null, null, "UPPER(" + ContactsContract.Contacts.DISPLAY_NAME + ") ASC");
+        }catch (Exception e){
+            Toast.makeText(this, e.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+        }
 
         if (cursorAndroidContact.getCount() > 0) {
             while (cursorAndroidContact.moveToNext()) {
@@ -81,7 +85,7 @@ public class ContactActivity extends AppCompatActivity {
 
                     phoneCursor.close();
                 }
-
+                addMemberDetailsInfo.setChecked(false);
                 addMemberDetailInfos.add(addMemberDetailsInfo);
             }
         }

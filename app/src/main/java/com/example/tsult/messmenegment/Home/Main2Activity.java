@@ -4,6 +4,8 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -24,9 +26,12 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.example.tsult.messmenegment.AddBazarPkg.AddBazaarDBOperation;
 import com.example.tsult.messmenegment.AddBazarPkg.AddBazaarMember;
 import com.example.tsult.messmenegment.AddExtraPkg.AddExtra;
+import com.example.tsult.messmenegment.AddExtraPkg.AddExtraDBOperation;
 import com.example.tsult.messmenegment.AddMealPkg.AddMeal;
+import com.example.tsult.messmenegment.AddMealPkg.AddMealDBOperation;
 import com.example.tsult.messmenegment.AddMember.AddFromPrevious;
 import com.example.tsult.messmenegment.AddMember.AddMember;
 import com.example.tsult.messmenegment.AddMember.AddMemberDBOperation;
@@ -37,6 +42,7 @@ import com.example.tsult.messmenegment.R;
 import com.example.tsult.messmenegment.ShowMealRatePkg.MealInfo;
 import com.example.tsult.messmenegment.ShowMember.ShowMember;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 public class Main2Activity extends AppCompatActivity
@@ -44,6 +50,7 @@ public class Main2Activity extends AppCompatActivity
 
     private FloatingActionButton addFab, addMealFab, addExtraFab;
     private TextView mealFabText, extraFabText;
+    private TextView totalMealTv, totalBazaarTv, mealRateTv, totalExtraTv, perPersoneExtraTv;
     private Animation fabOpen, fabClose, fabForward, fabBackword;
     private boolean isFabOpen = false;
     private RecyclerView memberDetailsList;
@@ -51,6 +58,7 @@ public class Main2Activity extends AppCompatActivity
     private ArrayList<Member> members;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
+    private String identifier;
 
 
     @Override
@@ -64,6 +72,12 @@ public class Main2Activity extends AppCompatActivity
         mealFabText = (TextView) findViewById(R.id.text_fab_meal);
         extraFabText = (TextView) findViewById(R.id.text_fab_extra);
         memberDetailsList = (RecyclerView) findViewById(R.id.member_detail_list_main);
+
+        totalMealTv = (TextView) findViewById(R.id.total_meal_tv_main);
+        totalBazaarTv = (TextView) findViewById(R.id.total_bazaar_tv_main);
+        totalExtraTv = (TextView) findViewById(R.id.total_extra_tv_main);
+        mealRateTv = (TextView) findViewById(R.id.meal_rate_tv_main);
+        perPersoneExtraTv = (TextView) findViewById(R.id.per_person_extra_tv_main);
 
         fabOpen = AnimationUtils.loadAnimation(this, R.anim.fab_open);
         fabClose = AnimationUtils.loadAnimation(this, R.anim.fab_close);
@@ -82,6 +96,34 @@ public class Main2Activity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        initCollapsingToolbar();
+
+        identifier = MealInfo.getYear()+" - "+ MealInfo.getMonth();
+        AddMealDBOperation addMealDBOperation = new AddMealDBOperation(this, null);
+        int mealNumber = addMealDBOperation.getAllMeal(identifier);
+        totalMealTv.setText(String.valueOf(mealNumber));
+
+        AddBazaarDBOperation addBazaarDBOperation = new AddBazaarDBOperation(0, this);
+        int bazaarCost = addBazaarDBOperation.getAllBazaarCost(identifier);
+        totalBazaarTv.setText(String.valueOf(bazaarCost));
+
+        double rate;
+        if (mealNumber != 0){
+            rate = Double.parseDouble(new DecimalFormat("##.##").format((double) bazaarCost / (double) mealNumber));
+        }else {
+            rate = 0.0;
+        }
+        mealRateTv.setText(String.valueOf(rate));
+
+        AddExtraDBOperation addExtraDBOperation = new AddExtraDBOperation(this);
+        int extraCost = addExtraDBOperation.getAllExtraCost(identifier);
+        totalExtraTv.setText(String.valueOf(extraCost));
+
+        AddMemberDBOperation addMemberDBOperation = new AddMemberDBOperation(this);
+        int memberNumber = addMemberDBOperation.getMemberList(identifier).size();
+        double extraRate =(double) extraCost/(double) memberNumber;
+        perPersoneExtraTv.setText(String.valueOf(extraRate));
 
         addFab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -260,5 +302,34 @@ public class Main2Activity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+    private void initCollapsingToolbar() {
+        final CollapsingToolbarLayout collapsingToolbar =
+                (CollapsingToolbarLayout) findViewById(R.id.toolbar_layout);
+        collapsingToolbar.setTitle(" ");
+        AppBarLayout appBarLayout = (AppBarLayout) findViewById(R.id.app_bar_layout);
+        appBarLayout.setExpanded(true);
+
+        // hiding & showing the title when toolbar expanded & collapsed
+        appBarLayout.addOnOffsetChangedListener(new AppBarLayout.OnOffsetChangedListener() {
+            boolean isShow = false;
+            int scrollRange = -1;
+
+            @Override
+            public void onOffsetChanged(AppBarLayout appBarLayout, int verticalOffset) {
+                if (scrollRange == -1) {
+                    scrollRange = appBarLayout.getTotalScrollRange();
+                }
+                if (scrollRange + verticalOffset == 0) {
+                    collapsingToolbar.setTitle("Meal Guard");
+                    isShow = true;
+                } else if (isShow) {
+                    collapsingToolbar.setTitle(" ");
+                    isShow = false;
+                }
+            }
+        });
+    }
+
 
 }
