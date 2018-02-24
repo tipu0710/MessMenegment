@@ -97,8 +97,8 @@ public class AddMealAdapter extends RecyclerView.Adapter<AddMealAdapter.ViewHold
             holder.addBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                        InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
-                        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+                    InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
                     for (int i = 0; i<mealDetailses2.size(); i++){
                         Meal meal = new Meal(day, mealDetailses2.get(i).getmId(), mealDetailses2.get(i).getmName(), date, mealDetailses2.get(i).getMealNumber(), identifier);
                         if (!mealStatus){
@@ -141,7 +141,7 @@ public class AddMealAdapter extends RecyclerView.Adapter<AddMealAdapter.ViewHold
 
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    }
+                }
 
                 @Override
                 public void afterTextChanged(Editable s) {
@@ -181,4 +181,7 @@ public class AddMealAdapter extends RecyclerView.Adapter<AddMealAdapter.ViewHold
             addBtn = (Button) itemView.findViewById(R.id.meal_adding_button);
         }
     }
+
+
+
 }

@@ -20,6 +20,7 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -156,12 +157,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
         TextView mName;
-        ImageButton delete, edit;
+        ImageView delete, edit;
         public ViewHolder(View itemView) {
             super(itemView);
             mName = (TextView) itemView.findViewById(R.id.member_name);
-            delete = (ImageButton) itemView.findViewById(R.id.call);
-            edit = (ImageButton) itemView.findViewById(R.id.mail);
+            delete = (ImageView) itemView.findViewById(R.id.call);
+            edit = (ImageView) itemView.findViewById(R.id.mail);
         }
     }
 }

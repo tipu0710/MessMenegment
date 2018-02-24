@@ -22,6 +22,7 @@ import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.PopupWindow;
@@ -42,6 +43,7 @@ import com.example.tsult.messmenegment.R;
 import com.example.tsult.messmenegment.ShowMealRatePkg.MealInfo;
 import com.example.tsult.messmenegment.ShowMember.ShowMember;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.logging.Handler;
 import java.util.logging.LogRecord;
@@ -79,7 +81,7 @@ public class MemberDetailsListAdapter extends RecyclerView.Adapter<MemberDetails
     }
 
     @Override
-    public void onBindViewHolder(final ViewHolder holder, int position) {
+    public void onBindViewHolder(final ViewHolder holder, final int position) {
         final int id = members.get(position).getmId();
         final String mName = members.get(position).getmName();
         final String mPhone = members.get(position).getmPhone();
@@ -89,8 +91,6 @@ public class MemberDetailsListAdapter extends RecyclerView.Adapter<MemberDetails
         addDepositDBOperation = new AddDepositDBOperation(context, id);
         AddMealDBOperation addMealDBOperation = new AddMealDBOperation(context, null);
         holder.mName.setText(mName);
-        holder.totalDeposit.setText(Integer.toString(addDepositDBOperation.getIndividualDeposit(id, identifier)));
-        holder.totalMeal.setText(Integer.toString(addMealDBOperation.getIndividualMeal(id, identifier)));
 
         holder.call.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -125,7 +125,7 @@ public class MemberDetailsListAdapter extends RecyclerView.Adapter<MemberDetails
         });
 
         double rate = MealInfo.getDepositInfo(context, id, identifier);
-        holder.restOfMoney.setText(Double.toString(rate));
+        holder.restOfMoney.setText(Double.toString(Double.parseDouble(new DecimalFormat("##.##").format(rate))));
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         if (position == getItemCount()-1){
             lp.setMargins(20, 0, 20, 140);
@@ -265,6 +265,22 @@ public class MemberDetailsListAdapter extends RecyclerView.Adapter<MemberDetails
                 }
             }
         });
+
+        holder.v2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, MemberDetails.class);
+                String name= members.get(position).getmName();
+                String phone = members.get(position).getmPhone();
+                String email = members.get(position).getnEmail();
+                int id = members.get(position).getmId();
+                intent.putExtra("id",id);
+                intent.putExtra("name",name);
+                intent.putExtra("phone", phone);
+                intent.putExtra("email", email);
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -273,19 +289,17 @@ public class MemberDetailsListAdapter extends RecyclerView.Adapter<MemberDetails
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        TextView mName, totalDeposit, totalMeal, restOfMoney;
-        ImageButton call, mail, menuBar;
+        TextView mName, restOfMoney;
+        ImageView call, mail, menuBar;
         View v2;
 
         public ViewHolder(View itemView) {
             super(itemView);
             mName = (TextView) itemView.findViewById(R.id.member_name);
-            totalDeposit = (TextView) itemView.findViewById(R.id.total_deposit_number);
-            totalMeal = (TextView) itemView.findViewById(R.id.total_meal_number);
-            call = (ImageButton) itemView.findViewById(R.id.call);
-            mail = (ImageButton) itemView.findViewById(R.id.mail);
+            call = (ImageView) itemView.findViewById(R.id.call);
+            mail = (ImageView) itemView.findViewById(R.id.mail);
             restOfMoney= (TextView) itemView.findViewById(R.id.rest_money);
-            menuBar = (ImageButton) itemView.findViewById(R.id.menu_bar);
+            menuBar = (ImageView) itemView.findViewById(R.id.menu_bar);
             v2 = itemView.findViewById(R.id.pad);
         }
     }

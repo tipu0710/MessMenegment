@@ -9,7 +9,8 @@
     <android.support.design.widget.AppBarLayout
         android:id="@+id/app_bar_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="296dp"
+        android:layout_marginBottom="17dp"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         android:fitsSystemWindows="true"
         >
@@ -17,130 +18,164 @@
         <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/toolbar_layout"
             android:layout_width="match_parent"
-            android:layout_height="250dp"
+            android:layout_height="296dp"
+            android:layout_marginBottom="17dp"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:contentScrim="?attr/colorPrimary"
             app:expandedTitleTextAppearance="@android:color/transparent"
             android:fitsSystemWindows="true"
             >
 
-            <LinearLayout
+            <RelativeLayout
+                app:layout_collapseMode="parallax"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:orientation="vertical"
-                app:layout_collapseMode="parallax">
-
-                <LinearLayout
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:orientation="horizontal"
+                android:layout_height="match_parent">
+                <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:layout_weight="1"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:text="Total Meal:"
-                        android:textSize="20sp"/>
-                    <TextView
-                        android:id="@+id/total_meal_tv_main"
-                        android:layout_weight=".6"
-                        android:gravity="right"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:text="00000000"
-                        android:textSize="20sp"/>
-                </LinearLayout>
-
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/header_pic"/>
                 <LinearLayout
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:orientation="horizontal"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:layout_weight="1"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:text="Total Bazaar:"
-                        android:textSize="20sp"/>
-                    <TextView
-                        android:id="@+id/total_bazaar_tv_main"
-                        android:layout_weight=".6"
-                        android:gravity="right"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:text="00000000"
-                        android:textSize="20sp"/>
-                </LinearLayout>
+                    android:layout_height="match_parent"
+                    android:gravity="top"
+                    android:layout_marginTop="65dp"
+                    android:orientation="vertical">
 
-                <LinearLayout
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:layout_weight="1"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:text="Meal Rate:"
-                        android:textSize="20sp"/>
-                    <TextView
-                        android:id="@+id/meal_rate_tv_main"
-                        android:layout_weight=".6"
-                        android:gravity="right"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:text="0.0000000"
-                        android:textSize="20sp"/>
-                </LinearLayout>
+                    <LinearLayout
+                        android:layout_marginLeft="50dp"
+                        android:layout_marginRight="50dp"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:textStyle="bold"
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="Total Meal:"
+                            android:textColor="#FFFFFF"
+                            android:textSize="18sp"/>
+                        <TextView
+                            android:id="@+id/total_meal_tv_main"
+                            android:layout_weight=".6"
+                            android:gravity="right"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="00000000"
+                            android:textColor="#FFFFFF"
+                            android:textSize="18sp"/>
+                    </LinearLayout>
 
-                <LinearLayout
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:layout_weight="1"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:text="Total Extra:"
-                        android:textSize="20sp"/>
-                    <TextView
-                        android:id="@+id/total_extra_tv_main"
-                        android:layout_weight=".6"
-                        android:gravity="right"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:text="00000000"
-                        android:textSize="20sp"/>
-                </LinearLayout>
+                    <LinearLayout
+                        android:layout_marginLeft="50dp"
+                        android:layout_marginRight="50dp"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:textStyle="bold"
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="Total Bazaar:"
+                            android:layout_marginTop="17dp"
+                            android:textColor="#FFFFFF"
+                            android:textSize="18sp"/>
+                        <TextView
+                            android:id="@+id/total_bazaar_tv_main"
+                            android:layout_weight=".6"
+                            android:gravity="right"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="00000000"
+                            android:layout_marginTop="17dp"
+                            android:textColor="#FFFFFF"
+                            android:textSize="18sp"/>
+                    </LinearLayout>
 
-                <LinearLayout
-                    android:layout_marginLeft="20dp"
-                    android:layout_marginRight="20dp"
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:layout_weight="1"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:text="Per Person Extra:"
-                        android:textSize="20sp"/>
-                    <TextView
-                        android:id="@+id/per_person_extra_tv_main"
-                        android:layout_weight=".6"
-                        android:gravity="right"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:text="0.0000000"
-                        android:textSize="20sp"/>
+                    <LinearLayout
+                        android:layout_marginLeft="50dp"
+                        android:layout_marginRight="50dp"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:textStyle="bold"
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="Meal Rate:"
+                            android:layout_marginTop="17dp"
+                            android:textColor="#FFFFFF"
+                            android:textSize="18sp"/>
+                        <TextView
+                            android:id="@+id/meal_rate_tv_main"
+                            android:layout_weight=".6"
+                            android:gravity="right"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="0.0000000"
+                            android:layout_marginTop="17dp"
+                            android:textColor="#FFFFFF"
+                            android:textSize="18sp"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_marginLeft="50dp"
+                        android:layout_marginRight="50dp"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:textStyle="bold"
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="Total Extra:"
+                            android:layout_marginTop="17dp"
+                            android:textColor="#FFFFFF"
+                            android:textSize="18sp"/>
+                        <TextView
+                            android:id="@+id/total_extra_tv_main"
+                            android:layout_weight=".6"
+                            android:gravity="right"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="00000000"
+                            android:layout_marginTop="17dp"
+                            android:textColor="#FFFFFF"
+                            android:textSize="18sp"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_marginLeft="50dp"
+                        android:layout_marginRight="50dp"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+                        <TextView
+                            android:textStyle="bold"
+                            android:layout_weight="1"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="Per Person Extra:"
+                            android:layout_marginTop="17dp"
+                            android:textColor="#FFFFFF"
+                            android:textSize="18sp"/>
+                        <TextView
+                            android:id="@+id/per_person_extra_tv_main"
+                            android:layout_weight=".6"
+                            android:gravity="right"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:text="0.0000000"
+                            android:layout_marginTop="17dp"
+                            android:textColor="#FFFFFF"
+                            android:textSize="18sp"/>
+                    </LinearLayout>
                 </LinearLayout>
-            </LinearLayout>
+            </RelativeLayout>
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
@@ -184,12 +219,12 @@
             android:layout_height="wrap_content"
             android:padding="4dp"
             android:textSize="16sp"
-            android:background="#ffffff"
+            android:background="#211F1F"
             android:layout_marginRight="10dp"
             android:elevation="5dp"
             android:layout_gravity="center"
-            android:textColor="#0000FF"
             android:visibility="invisible"
+            android:textColor="#4df799"
             android:text="Add Meal"/>
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/add_meal_fab"
@@ -214,13 +249,13 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:padding="4dp"
-            android:background="#ffffff"
-            android:visibility="invisible"
+            android:background="#211F1F"
             android:layout_marginRight="10dp"
             android:textSize="16sp"
+            android:visibility="invisible"
             android:layout_gravity="center"
             android:elevation="5dp"
-            android:textColor="#9400D3"
+            android:textColor="#00bad3"
             android:text="Add Extra"/>
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/add_extra_fab"

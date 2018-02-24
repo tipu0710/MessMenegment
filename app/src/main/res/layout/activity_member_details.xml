@@ -4,274 +4,159 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#211F1F"
     tools:context="com.example.tsult.messmenegment.MemberDetailsPkg.MemberDetails">
 
-    <ImageView
-        android:src="@drawable/background2"
-        android:scaleType="centerCrop"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+    <TextView
+        android:id="@+id/member_name_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name"
+        android:textColor="#F51157"
+        android:textSize="35sp"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="17dp"/>
 
     <LinearLayout
+        android:layout_margin="20dp"
         android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <TextView
-            android:id="@+id/member_name_tv"
-            android:text="Member 1"
-            android:textColor="#ffffff"
-            android:textSize="25sp"
-            android:layout_gravity="center"
-            android:padding="15dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <ScrollView
+        android:layout_below="@id/member_name_tv"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent">
+
+        <LinearLayout
+            android:background="@drawable/round1"
+            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
-            <LinearLayout
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:text="Phone number: "
-                        android:textColor="#ffffff"
-                        android:padding="15dp"
-                        android:layout_marginRight="10dp"
-                        android:layout_weight=".5"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content" />
-                    <TextView
-                        android:id="@+id/member_phone_tv"
-                        android:text="0"
-                        android:textColor="#ffffff"
-                        android:padding="15dp"
-                        android:gravity="right"
-                        android:layout_marginRight="25dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_weight=".5"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content" />
-                    <ImageButton
-                        android:id="@+id/call_btn"
-                        android:padding="15dp"
-                        android:src="@android:drawable/sym_action_call"
-                        android:background="@null"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                </LinearLayout>
+            android:gravity="center"
+            android:layout_height="49.3dp">
+            <TextView
+                android:layout_marginLeft="20dp"
+                android:textSize="15sp"
+                android:text="Total Deposit"
+                android:textColor="#9A3DF8"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/ind_total_deposit_tv"
+                android:layout_marginRight="20dp"
+                android:textSize="15sp"
+                android:text="100000"
+                android:gravity="right"
+                android:textColor="#9A3DF8"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout
+            android:background="@drawable/round1"
+            android:orientation="horizontal"
+            android:layout_marginTop="12dp"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_height="49.3dp">
+            <TextView
+                android:layout_marginLeft="20dp"
+                android:textSize="15sp"
+                android:text="Total Meal"
+                android:textColor="#39C6FB"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/ind_total_meal_tv"
+                android:layout_marginRight="20dp"
+                android:textSize="15sp"
+                android:text="100000"
+                android:gravity="right"
+                android:textColor="#39C6FB"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
 
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+        <LinearLayout
+            android:background="@drawable/round1"
+            android:orientation="horizontal"
+            android:layout_marginTop="12dp"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_height="49.3dp">
+            <TextView
+                android:layout_marginLeft="20dp"
+                android:textSize="15sp"
+                android:text="Extra"
+                android:textColor="#39FB93"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/ind_extra_tv"
+                android:layout_marginRight="20dp"
+                android:textSize="15sp"
+                android:text="100000"
+                android:gravity="right"
+                android:textColor="#39FB93"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
 
-                    <TextView
-                        android:id="@+id/textView"
-                        android:textColor="#ffffff"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="10dp"
-                        android:layout_weight=".3"
-                        android:padding="15dp"
-                        android:text="Email: " />
+        <LinearLayout
+            android:background="@drawable/round1"
+            android:orientation="horizontal"
+            android:layout_marginTop="12dp"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_height="49.3dp">
+            <TextView
+                android:layout_marginLeft="20dp"
+                android:textSize="15sp"
+                android:text="Rest of money"
+                android:textColor="#EF6B49"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/ind_rest_money_tv"
+                android:layout_marginRight="20dp"
+                android:textSize="15sp"
+                android:text="100000"
+                android:gravity="right"
+                android:textColor="#EF6B49"
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
 
-                    <TextView
-                        android:id="@+id/member_email_tv"
-                        android:text="0"
-                        android:textColor="#ffffff"
-                        android:padding="15dp"
-                        android:gravity="right"
-                        android:layout_marginRight="25dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_weight=".5"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content" />
-                    <ImageButton
-                        android:id="@+id/email_btn"
-                        android:padding="15dp"
-                        android:src="@android:drawable/sym_action_email"
-                        android:background="@null"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                </LinearLayout>
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <TextView
-                        android:id="@+id/textView2"
-                        android:textColor="#ffffff"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="10dp"
-                        android:layout_weight=".5"
-                        android:padding="15dp"
-                        android:text="Total meal: " />
-
-                    <TextView
-                        android:id="@+id/ind_total_meal_tv"
-                        android:text="0"
-                        android:textColor="#ffffff"
-                        android:padding="15dp"
-                        android:gravity="right"
-                        android:layout_marginRight="25dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_weight=".5"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content" />
-                </LinearLayout>
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:text="Deposit: "
-                        android:padding="15dp"
-                        android:textColor="#ffffff"
-                        android:layout_marginRight="10dp"
-                        android:layout_weight=".5"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content" />
-                    <TextView
-                        android:id="@+id/ind_total_deposit_tv"
-                        android:text="0"
-                        android:padding="15dp"
-                        android:textColor="#ffffff"
-                        android:gravity="right"
-                        android:layout_marginRight="25dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_weight=".5"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content" />
-                </LinearLayout>
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:text="Meal rate: "
-                        android:padding="15dp"
-                        android:textColor="#ffffff"
-                        android:layout_marginRight="10dp"
-                        android:layout_weight=".5"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content" />
-                    <TextView
-                        android:id="@+id/ind_total_meal_rate_tv"
-                        android:text="0"
-                        android:padding="15dp"
-                        android:textColor="#ffffff"
-                        android:gravity="right"
-                        android:layout_marginRight="25dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_weight=".5"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:text="Total extra cost: "
-                        android:padding="15dp"
-                        android:textColor="#ffffff"
-                        android:layout_marginRight="10dp"
-                        android:layout_weight=".5"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content" />
-                    <TextView
-                        android:id="@+id/total_extra_tv"
-                        android:text="0"
-                        android:textColor="#ffffff"
-                        android:padding="15dp"
-                        android:gravity="right"
-                        android:layout_marginRight="25dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_weight=".5"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content" />
-                </LinearLayout>
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:text="Per person extra cost: "
-                        android:padding="15dp"
-                        android:textColor="#ffffff"
-                        android:layout_marginRight="10dp"
-                        android:layout_weight=".5"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content" />
-                    <TextView
-                        android:id="@+id/ind_extra_tv"
-                        android:text="0"
-                        android:textColor="#ffffff"
-                        android:padding="15dp"
-                        android:gravity="right"
-                        android:layout_marginRight="25dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_weight=".5"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content" />
-                </LinearLayout>
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:text="Total cost: "
-                        android:padding="15dp"
-                        android:textColor="#ffffff"
-                        android:layout_marginRight="10dp"
-                        android:layout_weight=".5"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content" />
-                    <TextView
-                        android:id="@+id/ind_total_cost_tv"
-                        android:text="0"
-                        android:textColor="#ffffff"
-                        android:padding="15dp"
-                        android:gravity="right"
-                        android:layout_marginRight="25dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_weight=".5"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:orientation="horizontal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <TextView
-                        android:text="You have: "
-                        android:padding="15dp"
-                        android:textColor="#ffffff"
-                        android:layout_marginRight="10dp"
-                        android:layout_weight=".5"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content" />
-                    <TextView
-                        android:id="@+id/ind_rest_money_tv"
-                        android:text="0"
-                        android:padding="15dp"
-                        android:textColor="#ffffff"
-                        android:gravity="right"
-                        android:layout_marginRight="25dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_weight=".5"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content" />
-                </LinearLayout>
-            </LinearLayout>
-        </ScrollView>
+       <Button
+           android:id="@+id/meal_records"
+           android:text="meal records"
+           android:textColor="#FFFFFF"
+           android:layout_gravity="center"
+           android:layout_marginTop="20dp"
+           android:background="@drawable/round2"
+           android:layout_width="264.7dp"
+           android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/deposit_records"
+            android:text="Deposit Records"
+            android:textColor="#FFFFFF"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/round3"
+            android:layout_width="264.7dp"
+            android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/bazaar_records"
+            android:text="Bazaar Records"
+            android:textColor="#FFFFFF"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/round4"
+            android:layout_width="264.7dp"
+            android:layout_height="wrap_content" />
     </LinearLayout>
 </RelativeLayout>

@@ -25,7 +25,6 @@ public class ShowIndViMeal extends Activity {
     private ArrayList<Meal>meals;
     private RecyclerView.Adapter showMealAdapter;
 
-    private TextView nameTv;
     private Info info;
     private String mName, identifier, mPhone, mEmail;
     private int mId;
@@ -37,7 +36,6 @@ public class ShowIndViMeal extends Activity {
         setContentView(R.layout.activity_show_ind_vi_meal);
 
         mealList = (RecyclerView) findViewById(R.id.ind_meal_list);
-        nameTv = (TextView) findViewById(R.id.ind_member_name);
         info = MealInfo.Preference.getInfo(this);
         Intent intent = getIntent();
         mName = intent.getStringExtra("name");
@@ -52,8 +50,6 @@ public class ShowIndViMeal extends Activity {
         }else {
             identifier = MealInfo.getYear()+" - "+MealInfo.getMonth();
         }
-
-        nameTv.setText(mName);
 
         addMealDBOperation = new AddMealDBOperation(this, null);
         meals = new ArrayList<>();
@@ -70,25 +66,11 @@ public class ShowIndViMeal extends Activity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        /*if (status){
-            Intent intent = new Intent(this, ShowMealRate.class);
-            if (info.isSaved()){
-                intent.putExtra("table",info.getIdentifier());
-                intent.putExtra("status", true);
-            }else {
-                intent.putExtra("table",identifier);
-            }
-            startActivity(intent);
-        }else {
-            Intent intent = new Intent(this, Main2Activity.class);
-            intent.putExtra("id",mId);
-            intent.putExtra("name",mName);
-            intent.putExtra("phone",mPhone);
-            intent.putExtra("email",mEmail);
-            startActivity(intent);
-        }*/
-
-        Intent intent = new Intent(this, Main2Activity.class);
+        Intent intent = new Intent(this, MemberDetails.class);
+        intent.putExtra("id",mId);
+        intent.putExtra("name",mName);
+        intent.putExtra("phone", mPhone);
+        intent.putExtra("email", mEmail);
         startActivity(intent);
     }
 }

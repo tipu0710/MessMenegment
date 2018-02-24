@@ -1,132 +1,84 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="horizontal"
-    android:elevation="5dp"
     android:id="@+id/pad"
-    android:paddingBottom="10dp"
-    android:layout_margin="10dp"
-    android:background="#c799f2e9"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="87.8dp"
+    android:background="#191818"
+    android:elevation="5dp"
+    tools:layout_editor_absoluteY="81dp">
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_weight="1"
-        android:layout_width="0dp"
-        android:layout_height="match_parent">
-        <LinearLayout
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <TextView
-                android:padding="10dp"
-                android:textSize="20sp"
-                android:textColor="#ad75ec"
-                android:id="@+id/member_name"
-                android:layout_gravity="center"
-                android:text="Member"
-                android:textStyle="bold|italic"
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/member_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="16dp"
+        android:text="Name"
+        android:textColor="#3DB8EE"
+        android:textSize="20sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
 
-            <ImageButton
-                android:id="@+id/call"
-                android:src="@android:drawable/sym_call_outgoing"
-                android:layout_gravity="center"
-                android:background="@null"
-                android:layout_weight=".2"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="17dp"
+        android:text="Rest of money"
+        android:textColor="#7179EF"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/member_name" />
 
-            <ImageButton
-                android:id="@+id/mail"
-                android:background="@null"
-                android:layout_gravity="center"
-                android:layout_width="0dp"
-                android:layout_marginRight="20dp"
-                android:layout_height="wrap_content"
-                android:layout_weight=".2"
-                android:src="@android:drawable/sym_action_email" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_weight="2"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="Total Deposit:"/>
-            <TextView
-                android:id="@+id/total_deposit_number"
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:gravity="right"
-                android:text="2000"/>
-        </LinearLayout>
+    <ImageView
+        android:id="@+id/mail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="14dp"
+        android:layout_marginEnd="56dp"
+        android:layout_marginRight="56dp"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/ic_mail_outline_black_24dp"
+        app:layout_constraintBottom_toTopOf="@+id/rest_money"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <LinearLayout
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_weight="2"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="Total Meal:"/>
-            <TextView
-                android:id="@+id/total_meal_number"
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:gravity="right"
-                android:text="2000"/>
-        </LinearLayout>
+    <ImageView
+        android:id="@+id/call"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_call_black_24dp"
+        app:layout_constraintBottom_toBottomOf="@+id/mail"
+        app:layout_constraintEnd_toStartOf="@+id/rest_money"
+        app:layout_constraintStart_toStartOf="@+id/rest_money"
+        app:layout_constraintTop_toTopOf="@+id/mail" />
 
-        <LinearLayout
-            android:layout_marginBottom="5dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginLeft="30dp"
-            android:layout_marginRight="30dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_weight="2"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:text="Rest of Money:"/>
-            <TextView
-                android:id="@+id/rest_money"
-                android:layout_weight="1"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:gravity="right"
-                android:text="2000"/>
-        </LinearLayout>
-    </LinearLayout>
-
-    <ImageButton
+    <ImageView
         android:id="@+id/menu_bar"
-        android:layout_weight=".1"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:padding="5dp"
         android:src="@drawable/ic_menu"
-        android:background="@null"
-        android:layout_height="match_parent" />
-</LinearLayout>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/rest_money"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="00000"
+        android:textColor="#FFFFFF"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/mail"
+        app:layout_constraintStart_toStartOf="@+id/mail" />
+
+</android.support.constraint.ConstraintLayout>
